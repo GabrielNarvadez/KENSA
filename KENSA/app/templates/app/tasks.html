@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+
+
+  <!--start main wrapper-->
+    <div class="main-content">
+        <!-- Breadcrumb and other static content remain unchanged -->
+
+<main class="main-wrapper">
+  <div class="main-content">
+
+    
+    <!--breadcrumb-->
+      <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="breadcrumb-title pe-3">Applications</div>
+            <!-- Sorting Form -->
+    <div class="container my-3">
+      <form method="GET" action="" class="row g-3 align-items-center">
+          <div class="col-auto">
+              <label for="sort" class="form-label fw-bold">Sort by priority:</label>
+          </div>
+          <div class="col-auto">
+              <select name="sort" id="sort" class="form-select" onchange="this.form.submit()">
+                  <option value="asc" {% if sort_order == 'asc' %}selected{% endif %}>Ascending</option>
+                  <option value="desc" {% if sort_order == 'desc' %}selected{% endif %}>Descending</option>
+              </select>
+          </div>
+      </form>
+  </div>
+
+      </div>
+      <!--end breadcrumb-->
+    
+      <div class="card">
+        <div class="card-body">
+            <h4 class="mb-0">To Do List</h4>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row gy-3">
+                    <div class="col-md-4">
+                        <input id="todo-input" type="text" class="form-control" placeholder="Task Name" name="task_name" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="todo-input" type="number" class="form-control" placeholder="Priority Level" name="priority" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="is_completed">Completed?</label>
+                        <input type="checkbox" name="is_completed">
+                    </div>
+                    <div class="col-md-2 text-end d-grid">
+                        <button type="submit" class="btn btn-primary">Add todo</button>
+                    </div>
+                </div>
+            </form>
+    
+            <div class="container my-5">
+                <h2 class="text-center mb-4">Task List</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped align-middle">
+                        <thead class="table-dark text-center">
+                            <tr>
+                                <th scope="col">Task Name</th>
+                                <th scope="col">Priority</th>
+                                <th scope="col">Is Completed</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for task in tasks %}
+                            <tr>
+                                <td class="text-break">{{ task.task_name }}</td>
+                                <td class="text-center">
+                                    <form method="POST" action="">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="task_id" value="{{ task.id }}">
+                                        <input type="number" name="priority" value="{{ task.priority }}" class="form-control d-inline w-auto" min="1">
+                                </td>
+                                <td class="text-center">
+                                        <input type="checkbox" name="is_completed" {% if task.is_completed %}checked{% endif %} class="form-check-input">
+                                </td>
+                                <td class="text-center">
+                                        <button type="submit" class="btn btn-success btn-sm">Save</button>
+                                    </form>
+                                    <form method="POST" action="" class="d-inline">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="delete_task" value="{{ task.id }}">
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4" class="text-center text-muted">No tasks available.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+
+
+  </div>
+</main>
+
+
+
+  <!--end main wrapper-->
+
+    <!--start overlay-->
+    <div class="overlay btn-toggle"></div>
+    <!--end overlay-->
+
+    {% endblock %}

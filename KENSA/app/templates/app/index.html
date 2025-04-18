@@ -1,0 +1,668 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+  <!--start main wrapper-->
+  <main class="main-wrapper">
+    <div class="main-content">
+      <!--breadcrumb-->
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">Dashboard</div>
+					<div class="ps-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-0 p-0">
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Analysis</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="ms-auto">
+						<div class="btn-group" class="actions">
+							<button type="button" class="btn btn-outline-primary">Settings</button>
+							<button type="button"  class="btn btn-outline-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a id="undo-button" class="dropdown-item" href="javascript:;">Undo Action</a>
+								<a class="dropdown-item"id="redo-button" href="javascript:;">Redo Action</a>
+								<div class="dropdown-divider"></div>	<a class="dropdown-item"  href="javascript:;">Separated link</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end breadcrumb-->
+     
+        <div class="row">
+          <div class="col-xxl-8 d-flex align-items-stretch">
+            <div class="card w-100 overflow-hidden rounded-4">
+              <div class="card-body position-relative p-4">
+                <div class="row">
+                  <div class="col-12 col-sm-7">
+                    <div class="d-flex align-items-center gap-3 mb-5">
+                      <img src="{% static 'assets/images/avatars/01.png' %}" class="rounded-circle bg-grd-info p-1"  width="60" height="60" alt="user">
+                      <div class="">
+                        <p class="mb-0 fw-semibold">Welcome back</p>
+                        <h4 class="fw-semibold mb-0 fs-4 mb-0">Engr. Laila Contreras!</h4>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-5">
+                      <div class="">
+                        <h4 class="mb-1 fw-semibold d-flex align-content-center">$65.4K<i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i>
+                        </h4>
+                        <p class="mb-3">Today's Sales</p>
+                        <div class="progress mb-0" style="height:5px;">
+                          <div class="progress-bar bg-grd-success" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="vr"></div>
+                      <div class="">
+                        <h4 class="mb-1 fw-semibold d-flex align-content-center">78.4%<i class="ti ti-arrow-up-right fs-5 lh-base text-success"></i>
+                        </h4>
+                        <p class="mb-3">Growth Rate</p>
+                        <div class="progress mb-0" style="height:5px;">
+                          <div class="progress-bar bg-grd-danger" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-5">
+                    <div class="welcome-back-img pt-4">
+                       <img src="{% static 'assets/images/gallery/welcome-back-3.png' %}" height="180" alt="">
+                    </div>
+                  </div>
+                </div><!--end row-->
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-xxl-2 d-flex align-items-stretch">
+            <div class="card w-100 rounded-4">
+              <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between mb-1">
+                  <div class="">
+                    <h5 class="mb-0">42.5K</h5>
+                    <p class="mb-0">Active Users</p>
+                  </div>
+                  <div class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle-nocaret options dropdown-toggle"
+                      data-bs-toggle="dropdown">
+                      <span class="material-icons-outlined fs-5">more_vert</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="javascript:;">Action</a></li>
+                      <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
+                      <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="chart-container2">
+                  <div id="chart1"></div>
+                </div>
+                <div class="text-center">
+                  <p class="mb-0 font-12">24K users increased from last month</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-xxl-2 d-flex align-items-stretch">
+            <div class="card w-100 rounded-4">
+              <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between mb-3">
+                  <div class="">
+                    <h5 class="mb-0">97.4K</h5>
+                    <p class="mb-0">Total Users</p>
+                  </div>
+                  <div class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle-nocaret options dropdown-toggle"
+                      data-bs-toggle="dropdown">
+                      <span class="material-icons-outlined fs-5">more_vert</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="javascript:;">Action</a></li>
+                      <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
+                      <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="chart-container2">
+                  <div id="chart2"></div>
+                </div>
+                <div class="text-center">
+                  <p class="mb-0 font-12"><span class="text-success me-1">12.5%</span> from last month</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12 col-xxl-12 d-flex align-items-stretch">
+            <div class="card w-100 rounded-4">
+              <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between mb-3">
+                  <div class="">
+                    <h5 class="mb-0">Customer List</h5>
+                  </div>
+          
+                  <!-- Dropdown for actions -->
+                  <div class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle-nocaret options dropdown-toggle" data-bs-toggle="dropdown">
+                      <span class="material-icons-outlined fs-5">more_vert</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addCustomerModal">Add Customer</a></li>
+                      <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editCustomerModal">Edit Customer</a></li>
+                      <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#deleteCustomerModal">Delete Customer</a></li>
+                    </ul>
+                  </div>
+                </div>
+          
+                <!-- Search bar -->
+                <form method="GET" action="{% url 'index' %}">
+                  <div class="order-search position-relative my-3">
+                    <input
+                      class="form-control rounded-5 px-5"
+                      name="q"
+                      type="text"
+                      placeholder="Search"
+                      value="{{ request.GET.q }}"
+                    >
+                    <span class="material-icons-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
+                  </div>
+                </form>
+          
+                <!-- Table for customer list -->
+                <div class="table-responsive">
+                  <table class="table align-middle">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Item Name</th>
+                        <th>Amount</th>
+                        <th>Customer Comments</th>
+                        <th>Status</th>
+                        <th>AI Analysis</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for customer in customers %}
+                      <tr>
+                        <td>{{ customer.id }}</td>
+                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.email }}</td>
+                        <td>{{ customer.phone }}</td>
+                        <td>{{ customer.item_name }}</td>
+                        <td>{{ customer.amount }}</td>
+                        <td>{{ customer.customer_comments }}</td>
+                        <td>{{ customer.status }}</td>
+                        <td>{{ customer.ai_analysis }}</td>
+                        <td>
+                          <button
+                            class="btn btn-primary btn-sm"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editCustomerModal"
+                            onclick="populateEditForm(
+                              '{{ customer.id }}',
+                              '{{ customer.name }}',
+                              '{{ customer.email }}',
+                              '{{ customer.phone }}',
+                              '{{ customer.item_name }}',
+                              '{{ customer.amount }}',
+                              '{{ customer.customer_comments }}',
+                              '{{ customer.status }}',
+                              '{{ customer.ai_analysis }}'
+                            )"
+                          >
+                            Edit
+                          </button>
+                          <button
+                            class="btn btn-danger btn-sm"
+                            data-bs-toggle="modal"
+                            data-bs-target="#deleteCustomerModal"
+                            onclick="populateDeleteForm('{{ customer.id }}')"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          <!-- Add Customer Modal -->
+          <div class="modal fade" id="addCustomerModal" tabindex="-1">
+            <div class="modal-dialog">
+              <form method="POST" action="{% url 'add_customer' %}">
+                {% csrf_token %}
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Add Customer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <input type="text" name="id" class="form-control mb-3" placeholder="Customer ID" required>
+                    <input type="text" name="name" class="form-control mb-3" placeholder="Name" required>
+                    <input type="email" name="email" class="form-control mb-3" placeholder="Email" required>
+                    <input type="text" name="phone" class="form-control mb-3" placeholder="Phone">
+                    <input type="text" name="item_name" class="form-control mb-3" placeholder="Item Name">
+                    <input type="number" name="amount" class="form-control mb-3" placeholder="Amount">
+                    <textarea name="customer_comments" class="form-control mb-3" placeholder="Customer Comments"></textarea>
+                    <select name="status" class="form-control mb-3">
+                      <option value="pending">Pending</option>
+                      <option value="completed">Completed</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" name="create" class="btn btn-primary">Add</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          <!-- Edit Customer Modal -->
+          <div class="modal fade" id="editCustomerModal" tabindex="-1">
+            <div class="modal-dialog">
+              <form method="POST" action="{% url 'update_customer' %}">
+                {% csrf_token %}
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Edit Customer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <input type="hidden" name="id" id="editCustomerId">
+                    <input type="text" name="name" class="form-control mb-3" id="editCustomerName" placeholder="Name">
+                    <input type="email" name="email" class="form-control mb-3" id="editCustomerEmail" placeholder="Email">
+                    <input type="text" name="phone" class="form-control mb-3" id="editCustomerPhone" placeholder="Phone">
+                    <input type="text" name="item_name" class="form-control mb-3" id="editCustomerItemName" placeholder="Item Name">
+                    <input type="number" name="amount" class="form-control mb-3" id="editCustomerAmount" placeholder="Amount">
+                    <textarea name="customer_comments" class="form-control mb-3" id="editCustomerComments" placeholder="Customer Comments"></textarea>
+                    <select name="status" class="form-control mb-3" id="editCustomerStatus">
+                      <option value="pending">Pending</option>
+                      <option value="completed">Completed</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" name="update" class="btn btn-primary">Save Changes</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          {% if error %}
+<div class="alert alert-danger">
+    {{ error }}
+</div>
+{% endif %}
+
+          <!-- Delete Customer Modal -->
+          <div class="modal fade" id="deleteCustomerModal" tabindex="-1">
+            <div class="modal-dialog">
+              <form method="POST" action="{% url 'delete_customer' %}">
+                {% csrf_token %}
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Delete Customer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Are you sure you want to delete this customer?</p>
+                    <input type="hidden" name="id" id="deleteCustomerId">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-xl-6 col-xxl-8 d-flex align-items-stretch">
+            
+            <div class="card w-100 rounded-4">
+              <div class="card-body">
+                <div class="text-center">
+                  <h6 class="mb-0">Monthly Revenue</h6>
+                </div>
+                <div class="mt-4" id="chart5"></div>
+                <p>Avrage monthly sale for every author</p>
+                <div class="d-flex align-items-center gap-3 mt-4">
+                  <div class="">
+                    <h1 class="mb-0 text-primary">68.9%</h1>
+                  </div>
+                  <div class="d-flex align-items-center align-self-end">
+                    <p class="mb-0 text-success">34.5%</p>
+                    <span class="material-icons-outlined text-success">expand_less</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <div class="col-xl-6 col-xxl-4 d-flex align-items-stretch">
+            <div class="card w-100 rounded-4">
+              <div class="card-body">
+                <div id="chart8"></div>
+                <div class="d-flex align-items-center gap-3 mt-4">
+                  <div class="">
+                    <h1 class="mb-0">36.7%</h1>
+                  </div>
+                  
+                  <div class="d-flex align-items-center align-self-end gap-2">
+                    <span class="material-icons-outlined text-success">trending_up</span>
+                    <p class="mb-0 text-success">34.5%</p>
+                  </div>
+                </div>
+                <p class="mb-4">Visitors Growth</p>
+                <div class="d-flex flex-column gap-3">
+                  <div class="">
+                    <p class="mb-1">Cliks <span class="float-end">2589</span></p>
+                    <div class="progress" style="height: 5px;">
+                      <div class="progress-bar bg-grd-primary" style="width: 65%"></div>
+                    </div>
+                  </div>
+                  <div class="">
+                    <p class="mb-1">Likes <span class="float-end">6748</span></p>
+                    <div class="progress" style="height: 5px;">
+                      <div class="progress-bar bg-grd-warning" style="width: 55%"></div>
+                    </div>
+                  </div>
+                  <div class="">
+                    <p class="mb-1">Upvotes <span class="float-end">9842</span></p>
+                    <div class="progress" style="height: 5px;">
+                      <div class="progress-bar bg-grd-info" style="width: 45%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-xxl-4">
+            <div class="row">
+
+
+            </div>
+            {% comment %} <div class="card rounded-4">
+              <div class="card-body">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <div class="">
+                    <h3 class="mb-0">85,247</h3>
+                  </div>
+                  <div class="flex-grow-0">
+                    <p
+                      class="dash-lable d-flex align-items-center gap-1 rounded mb-0 bg-success text-success bg-opacity-10">
+                      <span class="material-icons-outlined fs-6">arrow_downward</span>23.7%
+                    </p>
+                  </div>
+                </div>
+                <p class="mb-0">Total Accounts</p>
+                <div id="chart7"></div>
+              </div>
+            </div> {% endcomment %}
+          </div>
+          <div class="col-xl-6 col-xxl-4 d-flex align-items-stretch">
+
+          </div>
+          
+
+          {% comment %} <div class="col-xl-6 col-xxl-4 d-flex align-items-stretch">
+            <div class="card w-100 rounded-4">
+              <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between mb-3">
+                  <div class="">
+                    <h5 class="mb-0 fw-bold">Social Leads</h5>
+                  </div>
+                  <div class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle-nocaret options dropdown-toggle"
+                      data-bs-toggle="dropdown">
+                      <span class="material-icons-outlined fs-5">more_vert</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="javascript:;">Action</a></li>
+                      <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
+                      <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
+                    </ul>
+                  </div>
+                 </div>
+                <div class="d-flex flex-column justify-content-between gap-4">
+                  <div class="d-flex align-items-center gap-4">
+                    <div class="d-flex align-items-center gap-3 flex-grow-1">
+                      <img src="{% static 'assets/images/apps/17.png' %}" width="32" alt="">
+                      <p class="mb-0">Facebook</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 fs-6">55%</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 data-attributes">
+                        <span
+                          data-peity='{ "fill": ["#0d6efd", "rgb(255 255 255 / 10%)"], "innerRadius": 14, "radius": 18 }'>5/7</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-4">
+                    <div class="d-flex align-items-center gap-3 flex-grow-1">
+                      <img src="{% static 'assets/images/apps/18.png' %}" width="32" alt="">
+                      <p class="mb-0">LinkedIn</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 fs-6">67%</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 data-attributes">
+                        <span
+                          data-peity='{ "fill": ["#fc185a", "rgb(255 255 255 / 10%)"], "innerRadius": 14, "radius": 18 }'>5/7</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-4">
+                    <div class="d-flex align-items-center gap-3 flex-grow-1">
+                      <img src="{% static 'assets/images/apps/19.png' %}" width="32" alt="">
+                      <p class="mb-0">Instagram</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 fs-6">78%</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 data-attributes">
+                        <span
+                          data-peity='{ "fill": ["#02c27a", "rgb(255 255 255 / 10%)"], "innerRadius": 14, "radius": 18 }'>5/7</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-4">
+                    <div class="d-flex align-items-center gap-3 flex-grow-1">
+                      <img src="{% static 'assets/images/apps/20.png' %}" width="32" alt="">
+                      <p class="mb-0">Snapchat</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 fs-6">46%</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 data-attributes">
+                        <span
+                          data-peity='{ "fill": ["#fd7e14", "rgb(255 255 255 / 10%)"], "innerRadius": 14, "radius": 18 }'>5/7</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-4">
+                    <div class="d-flex align-items-center gap-3 flex-grow-1">
+                      <img src="{% static 'assets/images/apps/05.png' %}" width="32" alt="">
+                      <p class="mb-0">Google</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 fs-6">38%</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 data-attributes">
+                        <span
+                          data-peity='{ "fill": ["#0dcaf0", "rgb(255 255 255 / 10%)"], "innerRadius": 14, "radius": 18 }'>5/7</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-4">
+                    <div class="d-flex align-items-center gap-3 flex-grow-1">
+                      <img src="{% static 'assets/images/apps/08.png' %}" width="32" alt="">
+                      <p class="mb-0">Altaba</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 fs-6">15%</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 data-attributes">
+                        <span
+                          data-peity='{ "fill": ["#6f42c1", "rgb(255 255 255 / 10%)"], "innerRadius": 14, "radius": 18 }'>5/7</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-4">
+                    <div class="d-flex align-items-center gap-3 flex-grow-1">
+                      <img src="{% static 'assets/images/apps/07.png' %}" width="32" alt="">
+                      <p class="mb-0">Spotify</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 fs-6">12%</p>
+                    </div>
+                    <div class="">
+                      <p class="mb-0 data-attributes">
+                        <span
+                          data-peity='{ "fill": ["#ff00b3", "rgb(255 255 255 / 10%)"], "innerRadius": 14, "radius": 18 }'>5/7</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </div> {% endcomment %}
+          {% comment %} <div class="col-xl-6 col-xxl-4 d-flex align-items-stretch">
+            <div class="card w-100 rounded-4">
+              <div class="card-header border-0 p-3 border-bottom">
+                <div class="d-flex align-items-start justify-content-between">
+                  <div class="">
+                    <h5 class="mb-0">New Users</h5>
+                  </div>
+                  <div class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle-nocaret options dropdown-toggle" data-bs-toggle="dropdown">
+                      <span class="material-icons-outlined fs-5">more_vert</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="javascript:;">Action</a></li>
+                      <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
+                      <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body p-0">
+                <div class="user-list p-3">
+                  <div class="d-flex flex-column gap-3">
+                    <div class="d-flex align-items-center gap-3">
+                      <img src="{% static 'assets/images/avatars/01.png' %}" width="45" height="45" class="rounded-circle" alt="">
+                      <div class="flex-grow-1">
+                        <h6 class="mb-0">Elon Jonado</h6>
+                        <p class="mb-0">elon_deo</p>
+                      </div>
+                      <div class="form-check form-check-inline me-0">
+                        <input class="form-check-input ms-0" type="checkbox">
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                      <img src="{% static 'assets/images/avatars/02.png' %}" width="45" height="45" class="rounded-circle" alt="">
+                      <div class="flex-grow-1">
+                        <h6 class="mb-0">Alexzender Clito</h6>
+                        <p class="mb-0">zli_alexzender</p>
+                      </div>
+                      <div class="form-check form-check-inline me-0">
+                        <input class="form-check-input ms-0" type="checkbox">
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                      <img src="{% static 'assets/images/avatars/03.png' %}" width="45" height="45" class="rounded-circle" alt="">
+                      <div class="flex-grow-1">
+                        <h6 class="mb-0">Michle Tinko</h6>
+                        <p class="mb-0">tinko_michle</p>
+                      </div>
+                      <div class="form-check form-check-inline me-0">
+                        <input class="form-check-input ms-0" type="checkbox">
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                      <img src="{% static 'assets/images/avatars/04.png' %}" width="45" height="45" class="rounded-circle" alt="">
+                      <div class="flex-grow-1">
+                        <h6 class="mb-0">KailWemba</h6>
+                        <p class="mb-0">wemba_kl</p>
+                      </div>
+                      <div class="form-check form-check-inline me-0">
+                        <input class="form-check-input ms-0" type="checkbox">
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                      <img src="{% static 'assets/images/avatars/05.png' %}" width="45" height="45" class="rounded-circle" alt="">
+                      <div class="flex-grow-1">
+                        <h6 class="mb-0">Henhco Tino</h6>
+                        <p class="mb-0">Henhco_tino</p>
+                      </div>
+                      <div class="form-check form-check-inline me-0">
+                        <input class="form-check-input ms-0" type="checkbox">
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                      <img src="{% static 'assets/images/avatars/06.png' %}" width="45" height="45" class="rounded-circle" alt="">
+                      <div class="flex-grow-1">
+                        <h6 class="mb-0">Gonjiko Fernando</h6>
+                        <p class="mb-0">gonjiko_fernando</p>
+                      </div>
+                      <div class="form-check form-check-inline me-0">
+                        <input class="form-check-input ms-0" type="checkbox">
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                      <img src="{% static 'assets/images/avatars/08.png' %}" width="45" height="45" class="rounded-circle" alt="">
+                      <div class="flex-grow-1">
+                        <h6 class="mb-0">Specer Kilo</h6>
+                        <p class="mb-0">specer_kilo</p>
+                      </div>
+                      <div class="form-check form-check-inline me-0">
+                        <input class="form-check-input ms-0" type="checkbox">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer bg-transparent p-3">
+                <div class="d-flex align-items-center justify-content-between gap-3">
+                  <a href="javascript:;" class="sharelink"><i class="material-icons-outlined">share</i></a>
+                  <a href="javascript:;" class="sharelink"><i class="material-icons-outlined">textsms</i></a>
+                  <a href="javascript:;" class="sharelink"><i class="material-icons-outlined">email</i></a>
+                  <a href="javascript:;" class="sharelink"><i class="material-icons-outlined">attach_file</i></a>
+                  <a href="javascript:;" class="sharelink"><i class="material-icons-outlined">event</i></a>
+                </div>
+              </div>
+            </div>
+          </div> {% endcomment %}
+
+        </div>
+
+
+
+    </div>
+  </main>
+  <!--end main wrapper-->
+
+  <!--start overlay-->
+     <div class="overlay btn-toggle"></div>
+  <!--end overlay-->
+{% endblock %}
