@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static i18n account crispy_forms_tags %}
+
+{% block title %}Account Inactive{% endblock title%}
+
+{% block body_attribute %}class="authentication-bg"{% endblock body_attribute %}
+
+{% block content %}
+
+<div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-xl-12">
+              <div class="card auth-card">
+                  <div class="card-body p-0">
+                      <div class="row align-items-center g-0 p-5">
+
+                        <h1>Account Inactive</h1>
+
+                        <p>This account is inactive.</p>
+
+                      </div>
+                  </div>
+              </div>
+          </div>     
+      </div>    
+  </div>
+</div>
+
+{% endblock content %}
+

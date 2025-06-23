@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}Sign Out{% endblock title%}
+
+{% block body_attribute %}class="authentication-bg"{% endblock body_attribute %}
+
+{% block content %}
+
+<div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-xl-12">
+              <div class="card auth-card">
+                  <div class="card-body p-0">
+                      <div class="row align-items-center g-0 p-5">
+                       
+                        <h1>{% trans "Sign Out" %}</h1>
+
+                        <p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+                        <form method="post" action="{% url 'account_logout' %}" novalidate>
+                          {% csrf_token %}
+                          {% if redirect_field_value %}
+                          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                          {% endif %}
+                          <button class="btn btn-danger" type="submit">{% trans 'Sign Out' %}</button>
+                        </form>
+
+                      </div>
+                      <!-- end row -->
+                  </div>
+                  <!-- end card-body -->
+              </div>
+              <!-- end card -->
+          </div>
+          <!-- end col -->
+      </div>
+      <!-- end row -->
+  </div>
+</div>
+
+{% endblock content %}

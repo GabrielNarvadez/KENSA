@@ -1,0 +1,94 @@
+{% extends 'layout_vertical.html' %}
+
+{% load static i18n %}
+
+{% block title %}Apex Timeline Chart{% endblock title %}
+
+{% block page_title %}
+    {% include "partials/page-title.html" with page_title='Timeline Charts' sub_title='Charts' %}
+{% endblock page_title %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-xl-9">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title anchor mb-1" id="overview">
+                        Overview
+                    </h5>
+
+                    <p class="mb-0">
+                    <span class="fw-medium">Find the JS file for the following
+                        chart at:</span>
+                        <code>
+                            js/components/apexchart-timeline.js</code>
+                    </p>
+                </div>
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-3 anchor" id="basic">
+                        Basic Timeline
+                    </h4>
+                    <div dir="ltr">
+                        <div id="basic-timeline" class="apex-charts"></div>
+                    </div>
+                </div>
+                <!-- end card body-->
+            </div>
+            <!-- end card -->
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-3 anchor" id="advanced">
+                        Advanced Timeline
+                    </h4>
+                    <div dir="ltr">
+                        <div id="advanced-timeline" class="apex-charts"></div>
+                    </div>
+                </div>
+                <!-- end card body-->
+            </div>
+            <!-- end card -->
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-3 anchor" id="group-rows">
+                        Multiple Series - Group Rows
+                    </h4>
+                    <div dir="ltr">
+                        <div id="group-rows-timeline" class="apex-charts"></div>
+                    </div>
+                </div>
+                <!-- end card body-->
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end col -->
+
+        <div class="col-xl-3">
+            <div class="card docs-nav">
+                <ul class="nav bg-transparent flex-column">
+                    <li class="nav-item">
+                        <a href="#basic" class="nav-link">Basic Timeline</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#advanced" class="nav-link">Advanced Timeline</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#group-rows" class="nav-link">Multiple Series - Group Rows</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock page_content %}
+
+{% block extra_javascript %}
+    <script src="{% static 'vendor/apexcharts/apexcharts.min.js' %}"></script>
+
+    <script src="{% static 'js/components/apexchart-timeline.js' %}"></script>
+{% endblock extra_javascript %}

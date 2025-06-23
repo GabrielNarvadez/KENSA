@@ -1,0 +1,25 @@
+//
+// breadcrumb.scss
+//
+
+// Breadcrumb item arrow
+.breadcrumb-item {
+    > a {
+        color: var(--#{$prefix}body-color);
+
+        &:hover {
+            color: $primary;
+        }
+    }
+
+    + .breadcrumb-item {
+        &::before {
+            font-family: 'boxicons';
+            font-size: 1rem;
+        }
+    }
+
+    &.active {
+        color: $breadcrumb-active-color;
+    }
+}

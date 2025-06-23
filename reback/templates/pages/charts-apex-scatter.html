@@ -1,0 +1,95 @@
+{% extends 'layout_vertical.html' %}
+
+{% load static i18n %}
+
+{% block html_attribute %}{% endblock html_attribute %}
+
+{% block title %}Apex Scatter Charts{% endblock title %}
+
+{% block page_title %}
+{% include "partials/page-title.html" with page_title='Scatter Charts' sub_title='Charts' %}
+{% endblock page_title %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-xl-9">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title anchor mb-1" id="overview">
+                    Overview
+                </h5>
+                <p class="mb-0">
+                    <span class="fw-medium">Find the JS file for the following
+                        chart at:</span>
+                    <code>
+                        js/components/apexchart-scatter.js</code>
+                </p>
+            </div>
+            <!-- end card-body -->
+        </div>
+        <!-- end card -->
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title anchor" id="basic">
+                    Scatter (XY) Chart
+                </h4>
+                <div dir="ltr">
+                    <div id="basic-scatter" class="apex-charts"></div>
+                </div>
+            </div>
+            <!-- end card body-->
+        </div>
+        <!-- end card -->
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title anchor" id="datetime">
+                    Scatter Chart - Datetime
+                </h4>
+                <div dir="ltr">
+                    <div id="datetime-scatter" class="apex-charts"></div>
+                </div>
+            </div>
+            <!-- end card body-->
+        </div>
+        <!-- end card -->
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title anchor" id="images">
+                    Scatter - Images
+                </h4>
+                <div dir="ltr">
+                    <div id="scatter-images" class="apex-charts scatter-images-chart"></div>
+                </div>
+            </div>
+            <!-- end card body-->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+
+    <div class="col-xl-3">
+        <div class="card docs-nav">
+            <ul class="nav bg-transparent flex-column">
+                <li class="nav-item">
+                    <a href="#basic" class="nav-link">Scatter (XY) Chart</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#datetime" class="nav-link">Scatter Chart - Datetime</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#images" class="nav-link">Scatter - Images</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}
+
+{% block extra_javascript %}
+<script src="{% static '/vendor/apexcharts/apexcharts.min.js' %}"></script>
+
+<script src="{% static 'js/components/apexchart-scatter.js' %}"></script>
+{% endblock extra_javascript %}

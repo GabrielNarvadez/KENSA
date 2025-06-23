@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+{% block html_attribute %}{% endblock html_attribute %}
+
+{% block title %}{% endblock title %}
+
+{% block extra_css %}{% endblock extra_css %}
+
+{% block body_attribute %}{% endblock body_attribute %}
+
+{% block content %}
+
+  {% block preloader %}{% endblock preloader %}
+
+  <div class="wrapper">
+
+    {% include 'partials/topbar.html' %}
+    {% include 'partials/main-nav.html' %}
+
+    <div class="page-content">
+
+      <div class="container-xxl">
+        {% block page_title %}{% endblock page_title %}
+
+        {% block page_content %}{% endblock page_content %}
+      </div>
+
+      {% include 'partials/footer.html' %}
+    </div>
+  </div>
+
+  {% block modal %}{% endblock modal %}
+  {% include 'partials/right-sidebar.html' %}
+
+{% endblock content %}
+
+{% block extra_javascript %}{% endblock extra_javascript %}

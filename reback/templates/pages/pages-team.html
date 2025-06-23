@@ -1,0 +1,524 @@
+{% extends 'layout_vertical.html' %}
+
+{% load static i18n %}
+
+{% block title %}Our Team{% endblock title %}
+
+{% block page_title %}
+{% include "partials/page-title.html" with page_title='Our Team' sub_title='Pages' %}
+{% endblock page_title %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row g-2">
+                    <div class="col-sm-4">
+                        <div class="search-bar">
+                            <span><i class="bx bx-search-alt"></i></span>
+                            <input type="search" class="form-control" id="search" placeholder="Search ..." />
+                        </div>
+                    </div>
+                    <!--end col-->
+                    <div class="col-sm-auto ms-auto">
+                        <div class="d-flex gap-1">
+                            <button class="btn btn-danger">
+                                <i class="bx bx-plus me-1 align-middle"></i>
+                                Add Members
+                            </button>
+                            <button type="button" class="btn btn-soft-primary fs-14">
+                                <i class="bx bxs-grid"></i>
+                            </button>
+                            <button type="button" class="btn btn-soft-primary fs-14">
+                                <i class="bx bx-list-ul"></i>
+                            </button>
+                            <div class="dropdown">
+                                <button type="button" id="dropdownMenuLink1" data-bs-toggle="dropdown"
+                                    aria-expanded="false" class="btn btn-soft-secondary fs-14">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink1">
+                                    <li>
+                                        <a class="dropdown-item" href="#">All</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Last Week</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Last Month</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Last Year</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xxl-4 col-md-6">
+                <div class="card">
+                    <div class="position-relative">
+                        <img src="{% static '/images/profile-bg.jpg' %}" alt="" class="card-img rounded-bottom-0" />
+                        <img src="{% static '/images/users/avatar-1.jpg' %}" alt=""
+                            class="avatar-lg rounded-circle position-absolute top-100 start-50 translate-middle border border-light border-3" />
+                    </div>
+                    <div class="card-body text-center mt-4 mb-3 pt-3">
+                        <a href="#!" class="text-dark fw-medium fs-18">Willie T. Anderson</a>
+                        <p class="mb-2 mt-1">
+                            <i class="bx bxs-envelope text-warning align-middle"></i>
+                            willieandr@armyspy.com
+                        </p>
+                        <div class="my-2">
+                            <p class="badge bg-light text-dark px-2 py-1 mb-2 fs-14">
+                                HR Manager
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="#!"
+                                class="btn btn-soft-primary avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="primary-tooltip" title="Facebook"><i
+                                    class="bx bxl-facebook"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-danger avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="danger-tooltip" title="Instagram"><i
+                                    class="bx bxl-instagram-alt"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-info avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="info-tooltip"
+                                title="Twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-primary avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="primary-tooltip" title="Linkedin"><i
+                                    class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center border-top">
+                        <div class="row">
+                            <div class="col-lg-4 col-4 border-end">
+                                <h4 class="text-dark fw-medium">
+                                    342
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-briefcase-alt-2 text-muted"></i>
+                                    Projects
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-4 border-end">
+                                <h4 class="text-dark fw-medium">
+                                    2y
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-calendar-event text-muted"></i>
+                                    Duration
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-4">
+                                <h4 class="text-dark fw-medium">
+                                    1032
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-task text-muted"></i>
+                                    Tasks
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-md-6">
+                <div class="card">
+                    <div class="position-relative">
+                        <img src="{% static '/images/profile-bg.jpg' %}" alt="" class="card-img rounded-bottom-0" />
+                        <img src="{% static '/images/users/avatar-2.jpg' %}" alt=""
+                            class="avatar-lg rounded-circle position-absolute top-100 start-50 translate-middle border border-light border-3" />
+                    </div>
+                    <div class="card-body text-center mt-4 mb-3 pt-3">
+                        <a href="#!" class="text-dark fw-medium fs-18">Harold J. Hurley
+                        </a>
+                        <p class="mb-2 mt-1">
+                            <i class="bx bxs-envelope text-warning align-middle"></i>
+                            haroldlhurly@armyspy.com
+                        </p>
+                        <div class="my-2">
+                            <p class="badge bg-light text-dark px-2 py-1 mb-2 fs-14">
+                                Web Designer
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="#!"
+                                class="btn btn-soft-primary avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="primary-tooltip" title="Facebook"><i
+                                    class="bx bxl-facebook"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-danger avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="danger-tooltip" title="Instagram"><i
+                                    class="bx bxl-instagram-alt"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-info avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="info-tooltip"
+                                title="Twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-primary avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="primary-tooltip" title="Linkedin"><i
+                                    class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center border-top">
+                        <div class="row">
+                            <div class="col-lg-4 col-4 border-end">
+                                <h4 class="text-dark fw-medium">
+                                    231
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-briefcase-alt-2 text-muted"></i>
+                                    Projects
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-4 border-end">
+                                <h4 class="text-dark fw-medium">
+                                    1.3y
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-calendar-event text-muted"></i>
+                                    Duration
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-4">
+                                <h4 class="text-dark fw-medium">
+                                    543
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-task text-muted"></i>
+                                    Tasks
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-md-6">
+                <div class="card">
+                    <div class="position-relative">
+                        <img src="{% static '/images/profile-bg.jpg' %}" alt="" class="card-img rounded-bottom-0" />
+                        <img src="{% static '/images/users/avatar-3.jpg' %}" alt=""
+                            class="avatar-lg rounded-circle position-absolute top-100 start-50 translate-middle border border-light border-3" />
+                    </div>
+                    <div class="card-body text-center mt-4 mb-3 pt-3">
+                        <a href="#!" class="text-dark fw-medium fs-18">Sandra E. Simon</a>
+                        <p class="mb-2 mt-1">
+                            <i class="bx bxs-envelope text-warning align-middle"></i>
+                            snadraaimon@armyspy.com
+                        </p>
+                        <div class="my-2">
+                            <p class="badge bg-light text-dark px-2 py-1 mb-2 fs-14">
+                                UI/UX Designer
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="#!"
+                                class="btn btn-soft-primary avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="primary-tooltip" title="Facebook"><i
+                                    class="bx bxl-facebook"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-danger avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="danger-tooltip" title="Instagram"><i
+                                    class="bx bxl-instagram-alt"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-info avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="info-tooltip"
+                                title="Twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-primary avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="primary-tooltip" title="Linkedin"><i
+                                    class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center border-top">
+                        <div class="row">
+                            <div class="col-lg-4 col-4 border-end">
+                                <h4 class="text-dark fw-medium">
+                                    123
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-briefcase-alt-2 text-muted"></i>
+                                    Projects
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-4 border-end">
+                                <h4 class="text-dark fw-medium">
+                                    7m
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-calendar-event text-muted"></i>
+                                    Duration
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-4">
+                                <h4 class="text-dark fw-medium">
+                                    231
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-task text-muted"></i>
+                                    Tasks
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-md-6">
+                <div class="card">
+                    <div class="position-relative">
+                        <img src="{% static '/images/profile-bg.jpg' %}" alt="" class="card-img rounded-bottom-0" />
+                        <img src="{% static '/images/users/avatar-4.jpg' %}" alt=""
+                            class="avatar-lg rounded-circle position-absolute top-100 start-50 translate-middle border border-light border-3" />
+                    </div>
+                    <div class="card-body text-center mt-4 mb-3 pt-3">
+                        <a href="#!" class="text-dark fw-medium fs-18">Richard J. Lewis</a>
+                        <p class="mb-2 mt-1">
+                            <i class="bx bxs-envelope text-warning align-middle"></i>
+                            richaaedllewis@armyspy.com
+                        </p>
+
+                        <div class="my-2">
+                            <p class="badge bg-light text-dark px-2 py-1 mb-2 fs-14">
+                                Software Engineer
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="#!"
+                                class="btn btn-soft-primary avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="primary-tooltip" title="Facebook"><i
+                                    class="bx bxl-facebook"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-danger avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="danger-tooltip" title="Instagram"><i
+                                    class="bx bxl-instagram-alt"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-info avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="info-tooltip"
+                                title="Twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-primary avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="primary-tooltip" title="Linkedin"><i
+                                    class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center border-top">
+                        <div class="row">
+                            <div class="col-lg-4 col-4 border-end">
+                                <h4 class="text-dark fw-medium">
+                                    452
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-briefcase-alt-2 text-muted"></i>
+                                    Projects
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-4 border-end">
+                                <h4 class="text-dark fw-medium">
+                                    4y
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-calendar-event text-muted"></i>
+                                    Duration
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-4">
+                                <h4 class="text-dark fw-medium">
+                                    331
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-task text-muted"></i>
+                                    Tasks
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-md-6">
+                <div class="card">
+                    <div class="position-relative">
+                        <img src="{% static '/images/profile-bg.jpg' %}" alt="" class="card-img rounded-bottom-0" />
+                        <img src="{% static '/images/users/avatar-5.jpg' %}" alt=""
+                            class="avatar-lg rounded-circle position-absolute top-100 start-50 translate-middle border border-light border-3" />
+                    </div>
+                    <div class="card-body text-center mt-4 mb-3 pt-3">
+                        <a href="#!" class="text-dark fw-medium fs-18">Margo M. Garris</a>
+                        <p class="mb-2 mt-1">
+                            <i class="bx bxs-envelope text-warning align-middle"></i>
+                            margogarr@armyspy.com
+                        </p>
+
+                        <div class="my-2">
+                            <p class="badge bg-light text-dark px-2 py-1 mb-2 fs-14">
+                                Lead Product Design
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="#!"
+                                class="btn btn-soft-primary avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="primary-tooltip" title="Facebook"><i
+                                    class="bx bxl-facebook"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-danger avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="danger-tooltip" title="Instagram"><i
+                                    class="bx bxl-instagram-alt"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-info avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="info-tooltip"
+                                title="Twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-primary avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="primary-tooltip" title="Linkedin"><i
+                                    class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center border-top">
+                        <div class="row">
+                            <div class="col-lg-4 col-4 border-end">
+                                <h4 class="text-dark fw-medium">
+                                    352
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-briefcase-alt-2 text-muted"></i>
+                                    Projects
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-4 border-end">
+                                <h4 class="text-dark fw-medium">
+                                    6m
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-calendar-event text-muted"></i>
+                                    Duration
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-4">
+                                <h4 class="text-dark fw-medium">
+                                    463
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-task text-muted"></i>
+                                    Tasks
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-md-6">
+                <div class="card">
+                    <div class="position-relative">
+                        <img src="{% static '/images/profile-bg.jpg' %}" alt="" class="card-img rounded-bottom-0" />
+                        <img src="{% static '/images/users/avatar-6.jpg' %}" alt=""
+                            class="avatar-lg rounded-circle position-absolute top-100 start-50 translate-middle border border-light border-3" />
+                    </div>
+                    <div class="card-body text-center mt-4 mb-3 pt-3">
+                        <a href="#!" class="text-dark fw-medium fs-18">Ruby L. Fisher</a>
+                        <p class="mb-2 mt-1">
+                            <i class="bx bxs-envelope text-warning align-middle"></i>
+                            rubylfisher@armyspy.com
+                        </p>
+                        <div class="my-2">
+                            <p class="badge bg-light text-dark px-2 py-1 mb-2 fs-14">
+                                Project Manager
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="#!"
+                                class="btn btn-soft-primary avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="primary-tooltip" title="Facebook"><i
+                                    class="bx bxl-facebook"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-danger avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="danger-tooltip" title="Instagram"><i
+                                    class="bx bxl-instagram-alt"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-info avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="info-tooltip"
+                                title="Twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#!"
+                                class="btn btn-soft-primary avatar-sm fs-20 d-inline-flex align-items-center justify-content-center p-0"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="primary-tooltip" title="Linkedin"><i
+                                    class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center border-top">
+                        <div class="row">
+                            <div class="col-lg-4 col-4 border-end">
+                                <h4 class="text-dark fw-medium">
+                                    231
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-briefcase-alt-2 text-muted"></i>Projects
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-4 border-end">
+                                <h4 class="text-dark fw-medium">
+                                    4y
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-calendar-event text-muted"></i>
+                                    Duration
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-4">
+                                <h4 class="text-dark fw-medium">
+                                    573
+                                </h4>
+                                <h5
+                                    class="mb-0 d-flex align-items-center justify-content-center gap-1 text-muted fs-14">
+                                    <i class="bx bx-task text-muted"></i>
+                                    Tasks
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}
