@@ -47,7 +47,7 @@
         </div>
 
         <!-- Category -->
-        <div class="dropdown topbar-item d-none d-lg-flex">
+        {% comment %} <div class="dropdown topbar-item d-none d-lg-flex">
           <button
             type="button"
             class="topbar-button"
@@ -140,7 +140,7 @@
               </a>
             </div>
           </div>
-        </div>
+        </div> {% endcomment %}
 
         <!-- Notification -->
         <div class="dropdown topbar-item">
@@ -324,7 +324,7 @@
         </div>
 
         <!-- Theme Setting -->
-        <div class="topbar-item">
+        {% comment %} <div class="topbar-item">
           <button
             type="button"
             class="topbar-button"
@@ -338,7 +338,7 @@
               class="fs-24 align-middle"
             ></iconify-icon>
           </button>
-        </div>
+        </div> {% endcomment %}
 
         <!-- Activity -->
         <div class="topbar-item d-none d-md-flex">
@@ -385,19 +385,19 @@
               ></i
               ><span class="align-middle">Profile</span>
             </a>
-            <a class="dropdown-item" href="{% url 'pages:dynamic_pages' template_name='apps-chat' %}">
+            {% comment %} <a class="dropdown-item" href="{% url 'pages:dynamic_pages' template_name='apps-chat' %}">
               <i
                 class="bx bx-message-dots text-muted fs-18 align-middle me-1"
               ></i
               ><span class="align-middle">Messages</span>
-            </a>
+            </a> {% endcomment %}
 
-            <a class="dropdown-item" href="{% url 'pages:dynamic_pages' template_name='pages-pricing' %}">
+            {% comment %} <a class="dropdown-item" href="{% url 'pages:dynamic_pages' template_name='pages-pricing' %}">
               <i
                 class="bx bx-wallet text-muted fs-18 align-middle me-1"
               ></i
               ><span class="align-middle">Pricing</span>
-            </a>
+            </a> {% endcomment %}
             <a class="dropdown-item" href="{% url 'pages:dynamic_pages' template_name='pages-faqs' %}">
               <i
                 class="bx bx-help-circle text-muted fs-18 align-middle me-1"

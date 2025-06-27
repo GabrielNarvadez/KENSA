@@ -3,11 +3,11 @@
   <!-- Sidebar Logo -->
   <div class="logo-box">
     <a href="/" class="logo-dark">
-      {% comment %} <img
+      <img
         src="{% static 'images/logo-sm.png' %}"
         class="logo-sm"
         alt="logo sm"
-      /> {% endcomment %}
+      />
       <img
         src="{% static 'images/logo-dark.png' %}"
         class="logo-lg"
@@ -48,7 +48,7 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          href="/"
+          href="#sidebarDashboards"
           data-bs-toggle="collapse"
           role="button"
           aria-expanded="false"
@@ -59,7 +59,7 @@
                           icon="iconamoon:home-duotone"
                         ></iconify-icon>
                     </span>
-          <span class="nav-text" > Dashboards </span>
+          <span class="nav-text"  href="/"> Dashboards </span>
         </a>
         <div class="collapse d-none" id="sidebarDashboards">
           <ul class="nav sub-navbar-nav">
@@ -78,7 +78,7 @@
         </div>
       </li>
 
-      <li class="menu-title">Inspection</li>
+      <li class="menu-title">Apps</li>
 
       <li class="nav-item">
         <a
@@ -193,85 +193,7 @@
           </ul>
         </div>
       </li>
-
-      {% comment %} <li class="nav-item">
-        <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='apps-chat' %}">
-                    <span class="nav-icon">
-                        <iconify-icon
-                          icon="iconamoon:comment-dots-duotone"
-                        ></iconify-icon>
-                    </span>
-          <span class="nav-text"> Chat </span>
-        </a>
-      </li> {% endcomment %}
-
-      {% comment %} <li class="nav-item">
-        <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='apps-email' %}">
-                    <span class="nav-icon">
-                        <iconify-icon
-                          icon="iconamoon:email-duotone"
-                        ></iconify-icon>
-                    </span>
-          <span class="nav-text"> Email </span>
-        </a>
-      </li> {% endcomment %}
-
-      {% comment %} <li class="nav-item">
-        <a
-          class="nav-link menu-arrow"
-          href="#sidebarCalendar"
-          data-bs-toggle="collapse"
-          role="button"
-          aria-expanded="false"
-          aria-controls="sidebarCalendar"
-        >
-                    <span class="nav-icon">
-                        <iconify-icon
-                          icon="iconamoon:calendar-1-duotone"
-                        ></iconify-icon>
-                    </span>
-          <span class="nav-text"> Calendar </span>
-        </a>
-        <div class="collapse" id="sidebarCalendar">
-          <ul class="nav sub-navbar-nav">
-            <li class="sub-nav-item">
-              <a
-                class="sub-nav-link"
-                href="{% url 'pages:dynamic_pages' template_name='apps-calendar-schedule' %}"
-              >Schedule</a
-              >
-            </li>
-            <li class="sub-nav-item">
-              <a
-                class="sub-nav-link"
-                href="{% url 'pages:dynamic_pages' template_name='apps-calendar-integration' %}"
-              >Integration</a
-              >
-            </li>
-            <li class="sub-nav-item">
-              <a
-                class="sub-nav-link"
-                href="{% url 'pages:dynamic_pages' template_name='apps-calendar-help' %}"
-              >Help</a
-              >
-            </li>
-          </ul>
-        </div>
-      </li> {% endcomment %}
-
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='apps-todo' %}">
-                    <span class="nav-icon">
-                        <iconify-icon
-                          icon="iconamoon:ticket-duotone"
-                        ></iconify-icon>
-                    </span>
-          <span class="nav-text"> Todo </span>
-        </a>
-      </li>
-
-      <li class="menu-title">Analytics</li>
-                  <li class="nav-item">
+            <li class="nav-item">
         <a
           class="nav-link menu-arrow"
           href="#sidebarCharts"
@@ -396,6 +318,81 @@
           </ul>
         </div>
       </li>
+      {% comment %} <li class="nav-item">
+        <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='apps-chat' %}">
+                    <span class="nav-icon">
+                        <iconify-icon
+                          icon="iconamoon:comment-dots-duotone"
+                        ></iconify-icon>
+                    </span>
+          <span class="nav-text"> Chat </span>
+        </a>
+      </li> {% endcomment %}
+
+      {% comment %} <li class="nav-item">
+        <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='apps-email' %}">
+                    <span class="nav-icon">
+                        <iconify-icon
+                          icon="iconamoon:email-duotone"
+                        ></iconify-icon>
+                    </span>
+          <span class="nav-text"> Email </span>
+        </a>
+      </li> {% endcomment %}
+
+      {% comment %} <li class="nav-item">
+        <a
+          class="nav-link menu-arrow"
+          href="#sidebarCalendar"
+          data-bs-toggle="collapse"
+          role="button"
+          aria-expanded="false"
+          aria-controls="sidebarCalendar"
+        >
+                    <span class="nav-icon">
+                        <iconify-icon
+                          icon="iconamoon:calendar-1-duotone"
+                        ></iconify-icon>
+                    </span>
+          <span class="nav-text"> Calendar </span>
+        </a>
+        <div class="collapse" id="sidebarCalendar">
+          <ul class="nav sub-navbar-nav">
+            <li class="sub-nav-item">
+              <a
+                class="sub-nav-link"
+                href="{% url 'pages:dynamic_pages' template_name='apps-calendar-schedule' %}"
+              >Schedule</a
+              >
+            </li>
+            <li class="sub-nav-item">
+              <a
+                class="sub-nav-link"
+                href="{% url 'pages:dynamic_pages' template_name='apps-calendar-integration' %}"
+              >Integration</a
+              >
+            </li>
+            <li class="sub-nav-item">
+              <a
+                class="sub-nav-link"
+                href="{% url 'pages:dynamic_pages' template_name='apps-calendar-help' %}"
+              >Help</a
+              >
+            </li>
+          </ul>
+        </div>
+      </li> {% endcomment %}
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='apps-todo' %}">
+                    <span class="nav-icon">
+                        <iconify-icon
+                          icon="iconamoon:ticket-duotone"
+                        ></iconify-icon>
+                    </span>
+          <span class="nav-text"> Todo </span>
+        </a>
+      </li>
 
       {% comment %} <li class="nav-item">
         <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='apps-social' %}">
@@ -409,7 +406,6 @@
         </a>
       </li> {% endcomment %}
 
-      <li class="menu-title">Admin</li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='apps-contacts' %}">
                     <span class="nav-icon">
@@ -540,9 +536,9 @@
         </div>
       </li> {% endcomment %}
 
+      <li class="menu-title">Custom</li>
 
-
-      {% comment %} <li class="nav-item">
+      <li class="nav-item">
         <a
           class="nav-link menu-arrow"
           href="#sidebarPages"
@@ -629,10 +625,10 @@
             </li>
           </ul>
         </div>
-      </li> {% endcomment %}
+      </li>
       <!-- end Pages Menu -->
 
-      {% comment %} <li class="nav-item">
+      <li class="nav-item">
         <a
           class="nav-link menu-arrow"
           href="#sidebarAuthentication"
@@ -694,9 +690,9 @@
             </li>
           </ul>
         </div>
-      </li> {% endcomment %}
+      </li>
 
-      {% comment %} <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="{% url  'pages:dynamic_pages' template_name='widgets' %}">
                     <span class="nav-icon">
                         <iconify-icon
@@ -706,12 +702,12 @@
           <span class="nav-text">Widgets</span>
           <span class="badge bg-info badge-pill text-end">9+</span>
         </a>
-      </li> {% endcomment %}
+      </li>
       <!-- end Demo Menu Item -->
 
-      {% comment %} <li class="menu-title">Components</li> {% endcomment %}
+      <li class="menu-title">Components</li>
 
-      {% comment %} <li class="nav-item">
+      <li class="nav-item">
         <a
           class="nav-link menu-arrow"
           href="#sidebarBaseUI"
@@ -837,10 +833,10 @@
             </li>
           </ul>
         </div>
-      </li> {% endcomment %}
+      </li>
       <!-- end Base UI Menu -->
 
-      {% comment %} <li class="nav-item">
+      <li class="nav-item">
         <a
           class="nav-link menu-arrow"
           href="#sidebarExtendedUI"
@@ -893,7 +889,7 @@
             </li>
           </ul>
         </div>
-      </li> {% endcomment %}
+      </li>
       <!-- end Extended UI Menu -->
 
 
@@ -905,7 +901,7 @@
 
       <!-- end Table Menu -->
 
-      {% comment %} <li class="nav-item">
+      <li class="nav-item">
         <a
           class="nav-link menu-arrow"
           href="#sidebarIcons"
@@ -968,7 +964,7 @@
             </li>
           </ul>
         </div>
-      </li> {% endcomment %}
+      </li>
       <!-- end Map Menu -->
 
       {% comment %} <li class="nav-item">
