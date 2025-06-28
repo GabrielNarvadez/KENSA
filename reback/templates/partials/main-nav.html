@@ -1,4 +1,27 @@
 {% load static i18n %}
+<style>
+  /* 1. Make the main-nav a positioning context */
+  .main-nav {
+    position: relative;
+  }
+  /* 2. Style for the bottom-glued link */
+  .super-admin-console {
+    position: absolute;
+    bottom: 0;          /* stick to bottom */
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: #fff;   /* match your sidebar bg */
+    border-top: 1px solid #e5e5e5;
+  }
+  .super-admin-console .nav-link {
+    display: flex;
+    align-items: center;
+  }
+  .super-admin-console .nav-icon {
+    margin-right: .75rem;
+  }
+</style>
 <div class="main-nav">
   <!-- Sidebar Logo -->
   <div class="logo-box">
@@ -61,6 +84,16 @@
                     </span>
           <span class="nav-text" > Dashboards </span>
         </a>
+              <li class="nav-item">
+        <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='apps-todo' %}">
+                    <span class="nav-icon">
+                        <iconify-icon
+                          icon="iconamoon:ticket-duotone"
+                        ></iconify-icon>
+                    </span>
+          <span class="nav-text"> Todo </span>
+        </a>
+      </li>
         <div class="collapse d-none" id="sidebarDashboards">
           <ul class="nav sub-navbar-nav">
             {% comment %} <li class="sub-nav-item">
@@ -147,7 +180,7 @@
               <a
                 class="sub-nav-link"
                 href="{% url 'pages:dynamic_pages' template_name='apps-ecommerce-order-detail' %}"
-              >Order Details</a
+              >Sheet Status</a
               >
             </li>
 
@@ -155,7 +188,7 @@
               <a
                 class="sub-nav-link"
                 href="{% url 'pages:dynamic_pages' template_name='apps-ecommerce-inventory' %}"
-              >Inventory</a
+              >Export Data</a
               >
             </li>
           </ul>
@@ -259,16 +292,7 @@
         </div>
       </li> {% endcomment %}
 
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='apps-todo' %}">
-                    <span class="nav-icon">
-                        <iconify-icon
-                          icon="iconamoon:ticket-duotone"
-                        ></iconify-icon>
-                    </span>
-          <span class="nav-text"> Todo </span>
-        </a>
-      </li>
+
 
       <li class="menu-title">Analytics</li>
                   <li class="nav-item">
@@ -1047,5 +1071,14 @@
       </li> {% endcomment %}
       <!-- end Demo Menu Item -->
     </ul>
+  </div>
+    <!-- 3. The new glued-to-bottom link -->
+  <div class="super-admin-console">
+    <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='charts-apex-radar' %}"> 
+      <span class="nav-icon">
+        <iconify-icon icon="iconamoon:invoice-duotone"></iconify-icon>
+      </span>
+      <span class="nav-text"> Super Admin Console </span>
+    </a>
   </div>
 </div>

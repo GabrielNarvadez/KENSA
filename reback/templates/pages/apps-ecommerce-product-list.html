@@ -4,10 +4,10 @@
 
 {% block html_attribute %}{% endblock html_attribute %}
 
-{% block title %}Products List{% endblock title %}
+{% block title %}Steel Sheets{% endblock title %}
 
 {% block page_title %}
-{% include "partials/page-title.html" with page_title='Products List' sub_title='Ecommerce' %}
+{% include "partials/page-title.html" with page_title='Steel Sheets' sub_title='Ecommerce' %}
 {% endblock page_title %}
 
 {% block page_content %}
@@ -23,7 +23,7 @@
                     </div>
                     <div>
                         <a href="{% url 'pages:dynamic_pages' template_name='apps-ecommerce-product-add' %}" class="btn btn-primary d-flex align-items-center">
-                            <i class="bx bx-plus me-1"></i>Add Product
+                            <i class="bx bx-plus me-1"></i>Add Steel Sheet
                         </a>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <table class="table text-nowrap mb-0">
                         <thead class="bg-light bg-opacity-50">
                             <tr>
-                                <th>Product Name</th>
+                                <th>Steel Sheet Name</th>
                                 <th>Category</th>
                                 <th>Price</th>
                                 <th>Inventory</th>
