@@ -4,11 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.template import TemplateDoesNotExist
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from .models import SteelSheet, SteelSheetInspection
+from .models import SteelSheet, SteelSheetInspection, ScanLog
 from django.views.decorators.http import require_POST
 from django import forms
 from django.forms import modelformset_factory
 from django.contrib.auth import get_user_model
+from django.http import HttpResponse
+
 User = get_user_model()
 
 @login_required
@@ -192,3 +194,105 @@ def steel_sheet_inspection_delete(request, pk):
     inspection = get_object_or_404(SteelSheetInspection, pk=pk)
     inspection.delete()
     return redirect('pages:steel-sheet-inspection-list')
+
+def steel_sheet_status(request):
+    sheets = SteelSheet.objects.prefetch_related('inspections').all()
+    selected_id = request.GET.get('sheet_id')
+    selected_sheet = None
+    latest_inspection = None
+    if selected_id:
+        selected_sheet = get_object_or_404(SteelSheet, pk=selected_id)
+        latest_inspection = selected_sheet.inspections.order_by('-created_at').first()
+    return render(request, 'pages/steel-sheets-individual-status.html', {
+        'sheets': sheets,
+        'selected_sheet': selected_sheet,
+        'latest_inspection': latest_inspection,
+    })
+
+@login_required
+def scan_log_view(request):
+    logs = ScanLog.objects.select_related('operator', 'qc_manager_tagged').all()
+
+    # Filtering
+    product_id = request.GET.get('product_id', '')
+    machine_id = request.GET.get('machine_id', '')
+    operator = request.GET.get('operator', '')
+    date_from = request.GET.get('date_from', '')
+    date_to = request.GET.get('date_to', '')
+    shift_start = request.GET.get('shift_start', '')
+    shift_end = request.GET.get('shift_end', '')
+    search = request.GET.get('search', '')
+
+    if product_id:
+        logs = logs.filter(product_id__icontains=product_id)
+    if machine_id:
+        logs = logs.filter(machine_id__icontains=machine_id)
+    if operator:
+        logs = logs.filter(operator__username__icontains=operator)
+    if date_from:
+        logs = logs.filter(date_scanned__gte=date_from)
+    if date_to:
+        logs = logs.filter(date_scanned__lte=date_to)
+    if shift_start and shift_end:
+        logs = logs.filter(time_scanned__gte=shift_start, time_scanned__lte=shift_end)
+    if search:
+        logs = logs.filter(
+            Q(product_id__icontains=search) |
+            Q(machine_id__icontains=search) |
+            Q(operator__username__icontains=search)
+        )
+
+    # Download CSV
+    if 'download' in request.GET:
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="scanlog.csv"'
+        writer = csv.writer(response)
+        writer.writerow([
+            'Product ID', 'Machine ID', 'Operator', 'Date Scanned', 'Time', 'Condition',
+            'Number of Defects', 'Image URL', 'QC Tagged'
+        ])
+        for log in logs:
+            writer.writerow([
+                log.product_id, log.machine_id, log.operator, log.date_scanned,
+                log.time_scanned, log.condition, log.num_defects,
+                log.image.url if log.image else '', log.qc_manager_tagged
+            ])
+        return response
+
+    # Pagination (simple, show 25 per page)
+    page = int(request.GET.get('page', 1))
+    page_size = 25
+    start = (page - 1) * page_size
+    end = start + page_size
+    logs_page = logs[start:end]
+    total = logs.count()
+    context = {
+        "logs": logs_page,
+        "total": total,
+        "page": page,
+        "page_size": page_size,
+        "filters": {
+            "product_id": product_id,
+            "machine_id": machine_id,
+            "operator": operator,
+            "date_from": date_from,
+            "date_to": date_to,
+            "shift_start": shift_start,
+            "shift_end": shift_end,
+            "search": search,
+        }
+    }
+    return render(request, 'pages/scan-log.html', context)
+
+
+@login_required
+def scan_log_detail(request, pk):
+    return HttpResponse("Scan Log Detail view coming soon!")
+
+@login_required
+def scan_log_edit(request, pk):
+    return HttpResponse("Scan Log Edit view coming soon!")
+
+@login_required
+def scan_log_delete(request, pk):
+    return HttpResponse("Scan Log Delete view coming soon!")

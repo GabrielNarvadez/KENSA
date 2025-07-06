@@ -1,5 +1,4 @@
 {% extends 'layout_vertical.html' %}
-
 {% load static i18n %}
 
 {% block title %}KENSA | Arktech Phils Co.{% endblock title %}
@@ -9,549 +8,176 @@
 {% endblock page_title %}
 
 {% block page_content %}
-  <div class="row">
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <div
-            class="d-flex align-items-center justify-content-between"
-          >
-            <div>
-              <h3 class="mb-0 fw-bold mb-2">
-                55 %
-              </h3>
-              <p class="text-muted">
-                Defect-Free Sheets
-              </p>
-              <span
-                class="badge fs-12 badge-soft-success"
-              ><i
-                class="ti ti-arrow-badge-up"
-              ></i>
-                                                Good</span
-              >
-            </div>
-            <div>
-              <div
-                class="avatar-lg d-inline-block me-1"
-              >
-                                                <span
-                                                  class="avatar-title bg-info-subtle text-info rounded-circle"
-                                                >
-                                                    <iconify-icon
-                                                      icon="iconamoon:credit-card-duotone"
-                                                      class="fs-32"
-                                                    ></iconify-icon>
-                                                </span>
-              </div>
+<style>
+  body { background: #fff7f3; }
+  .card { border-radius: 18px; }
+  .badge-soft-success, .btn-primary {
+    background: #de3131 !important;
+    color: #fff !important;
+  }
+  .fw-bold, h3 { color: #202a38 !important; }
+</style>
+<div class="row">
+  <!-- Defect-Free Sheets -->
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <h3 class="mb-0 fw-bold mb-2">55 %</h3>
+            <p class="text-muted">Defect-Free Sheets</p>
+            <span class="badge fs-12" style="background:#202a38;color:#fff"><i class="ti ti-arrow-badge-up"></i> Good</span>
+          </div>
+          <div>
+            <div class="avatar-lg d-inline-block me-1">
+              <span class="avatar-title rounded-circle" style="background:#202a38;">
+                <iconify-icon icon="material-symbols:check-circle-rounded" class="fs-32" style="color:#fff"></iconify-icon>
+              </span>
             </div>
           </div>
         </div>
-        <!-- end card-body -->
       </div>
-      <!-- end card -->
     </div>
-    <!-- end col -->
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <div
-            class="d-flex align-items-center justify-content-between"
-          >
-            <div>
-              <h3 class="mb-0 fw-bold mb-2">
-                75.09%
-              </h3>
-              <p class="text-muted">
-                Detection Accuracy
-              </p>
-              <span
-                class="badge fs-12 badge-soft-success"
-              ><i
-                class="ti ti-arrow-badge-up"
-              ></i>
-                                                Best</span
-              >
-            </div>
-            <div>
-              <div
-                class="avatar-lg d-inline-block me-1"
-              >
-                                                <span
-                                                  class="avatar-title bg-primary-subtle text-primary rounded-circle"
-                                                >
-                                                    <iconify-icon
-                                                      icon="iconamoon:store-duotone"
-                                                      class="fs-32"
-                                                    ></iconify-icon>
-                                                </span>
-              </div>
+  </div>
+  <!-- Detection Accuracy -->
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <h3 class="mb-0 fw-bold mb-2">75.09%</h3>
+            <p class="text-muted">Detection Accuracy</p>
+            <span class="badge fs-12" style="background:#4f6d9a;color:#fff"><i class="ti ti-arrow-badge-up"></i> Best</span>
+          </div>
+          <div>
+            <div class="avatar-lg d-inline-block me-1">
+              <span class="avatar-title rounded-circle" style="background:#4f6d9a;">
+                <iconify-icon icon="material-symbols:radar" class="fs-32" style="color:#fff"></iconify-icon>
+              </span>
             </div>
           </div>
         </div>
-        <!-- end card-body -->
       </div>
-      <!-- end card -->
     </div>
-    <!-- end col -->
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <div
-            class="d-flex align-items-center justify-content-between"
-          >
-            <div>
-              <h3 class="mb-0 fw-bold mb-2">
-                62.8 %
-              </h3>
-              <p class="text-muted">
-                Total Defects
-              </p>
-              <span
-                class="badge fs-12 badge-soft-danger"
-              ><i
-                class="ti ti-arrow-badge-up"
-              ></i>
-                                                Alarming</span
-              >
-            </div>
-            <div>
-              <div
-                class="avatar-lg d-inline-block me-1"
-              >
-                                                <span
-                                                  class="avatar-title bg-success-subtle text-success rounded-circle"
-                                                >
-                                                    <iconify-icon
-                                                      icon="iconamoon:3d-duotone"
-                                                      class="fs-32"
-                                                    ></iconify-icon>
-                                                </span>
-              </div>
+  </div>
+  <!-- Total Defects -->
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <h3 class="mb-0 fw-bold mb-2">62.8 %</h3>
+            <p class="text-muted">Total Defects</p>
+            <span class="badge fs-12" style="background:#de3131;color:#fff"><i class="ti ti-arrow-badge-up"></i> Alarming</span>
+          </div>
+          <div>
+            <div class="avatar-lg d-inline-block me-1">
+              <span class="avatar-title rounded-circle" style="background:#de3131;">
+                <iconify-icon icon="material-symbols:error-rounded" class="fs-32" style="color:#fff"></iconify-icon>
+              </span>
             </div>
           </div>
         </div>
-        <!-- end card-body -->
       </div>
-      <!-- end card -->
     </div>
-    <!-- end col -->
+  </div>
+  <!-- Rejection Rate -->
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <h3 class="mb-0 fw-bold mb-2">6%</h3>
+            <p class="text-muted">Rejection Rate</p>
+            <span class="badge fs-12" style="background:#b0b5b9;color:#fff"><i class="ti ti-arrow-badge-up"></i> Good</span>
+          </div>
+          <div>
+            <div class="avatar-lg d-inline-block me-1">
+              <span class="avatar-title rounded-circle" style="background:#b0b5b9;">
+                <iconify-icon icon="material-symbols:thumb-down-rounded" class="fs-32" style="color:#fff"></iconify-icon>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <div
-            class="d-flex align-items-center justify-content-between"
-          >
-            <div>
-              <h3 class="mb-0 fw-bold mb-2">
-                6%
-              </h3>
-              <p class="text-muted">
-                Rejection Rate
-              </p>
-              <span
-                class="badge fs-12 badge-soft-success"
-              ><i
-                class="ti ti-arrow-badge-up"
-              ></i>
-                                                Good</span
-              >
-            </div>
-            <div>
-              <div
-                class="avatar-lg d-inline-block me-1"
-              >
-                                                <span
-                                                  class="avatar-title bg-warning-subtle text-warning rounded-circle"
-                                                >
-                                                    <iconify-icon
-                                                      icon="iconamoon:3d-duotone"
-                                                      class="fs-32"
-                                                    ></iconify-icon>
-                                                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end card-body -->
-      </div>
-      <!-- end card -->
+
+  <div class="row mt-3">
+    <div class="col-4">
+      <div class="card"><div class="card-body">
+        <h4 class="card-title mb-3 anchor" id="monochrome">Defect Type Breakdown</h4>
+        <div dir="ltr"><div id="monochrome-pie" class="apex-charts"></div></div>
+      </div></div>
     </div>
-    <!-- end col -->
+    <div class="col-4">
+      <div class="card"><div class="card-body">
+        <h5 class="card-title anchor" id="basic">Defects Detected Per Month<a class="anchor-link" href="#basic">#</a></h5>
+        <div id="basic-bar" class="apex-charts"></div>
+      </div></div>
+    </div>
+    <div class="col-4">
+      <div class="card"><div class="card-body">
+        <h4 class="card-title mb-3 anchor" id="datalabels">Defect Source Breakdown</h4>
+        <div dir="ltr"><div id="datalabels-column" class="apex-charts"></div></div>
+      </div></div>
+    </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-4">
-          <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-3 anchor" id="monochrome">
-                    Defect Type Breakdown
-                </h4>
-                <div dir="ltr">
-                    <div id="monochrome-pie" class="apex-charts"></div>
-                </div>
-            </div>
-            <!-- end card body-->
-        
-
-
-
-          
-        </div>
+      <div class="card"><div class="card-body">
+        <h4 class="card-title mb-3 anchor" id="simple_donut">Defect-Free vs. Defective Sheets Distribution</h4>
+        <div dir="ltr"><div id="simple-donut" class="apex-charts"></div></div>
+      </div></div>
     </div>
     <div class="col-4">
-        <!-- end col -->
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title anchor" id="basic">
-                    Defects Detected Per Month<a class="anchor-link" href="#basic">#</a>
-                </h5>
-
-                <div id="basic-bar" class="apex-charts"></div>
-            </div>
-        </div>
+      <div class="card"><div class="card-body">
+        <h5 class="card-title anchor" id="basic2">Rejection Per Month<a class="anchor-link" href="#basic2">#</a></h5>
+        <div id="rejection-bar" class="apex-charts"></div>
+      </div></div>
     </div>
-        <div class="col-4">
-        <!-- end col -->
-                <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-3anchor" id="datalabels">
-                    Defect Source Breakdown
-                </h4>
-                <div dir="ltr">
-                    <div id="datalabels-column" class="apex-charts"></div>
-                </div>
-            </div>
-            <!-- end card body-->
-        </div>
+    <div class="col-4">
+      <div class="card"><div class="card-body">
+        <h4 class="card-title mb-3 anchor" id="datalabels2">Products per Month</h4>
+        <div dir="ltr"><div id="products-column" class="apex-charts"></div></div>
+      </div></div>
     </div>
-      <!-- end card -->
-
-    <!-- end col -->
   </div>
 
-
-    <div class="row">
-    <div class="col-4">
-                <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-3 anchor" id="simple_donut">
-                    Defect-Free vs. Defective Sheets Distribution
-                </h4>
-                <div dir="ltr">
-                    <div id="simple-donut" class="apex-charts"></div>
-                </div>
-            </div>
-            <!-- end card body-->
-        </div>
-    </div>
-    <div class="col-4">
-        <!-- end col -->
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title anchor" id="basic">
-                    Rejection Per Month<a class="anchor-link" href="#basic">#</a>
-                </h5>
-
-                <div id="basic-bar" class="apex-charts"></div>
-            </div>
-        </div>
-    </div>
-        <div class="col-4">
-        <!-- end col -->
-                <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-3anchor" id="datalabels">
-                    Products per Month
-                </h4>
-                <div dir="ltr">
-                    <div id="datalabels-column" class="apex-charts"></div>
-                </div>
-            </div>
-            <!-- end card body-->
-        </div>
-    </div>
-      <!-- end card -->
-
-    <!-- end col -->
-  </div>
-
-
-  <div class="row">
+  <!-- Logs -->
+  <div class="row mt-3">
     <div class="col-lg-4">
       <div class="card">
-        <div
-          class="d-flex card-header justify-content-between align-items-center border-bottom border-dashed"
-        >
-          <h4 class="card-title">
-            Recent Detection Logs
-          </h4>
-          <div class="dropdown">
-            <a
-              href="#"
-              class="dropdown-toggle arrow-none card-drop"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <iconify-icon
-                icon="iconamoon:menu-kebab-vertical-circle-duotone"
-                class="fs-20 align-middle text-muted"
-              ></iconify-icon>
-            </a>
-            <div
-              class="dropdown-menu dropdown-menu-end"
-            >
-              <!-- item-->
-              <a
-                href="javascript:void(0);"
-                class="dropdown-item"
-              >Download</a
-              >
-              <!-- item-->
-              <a
-                href="javascript:void(0);"
-                class="dropdown-item"
-              >Export</a
-              >
-              <!-- item-->
-              <a
-                href="javascript:void(0);"
-                class="dropdown-item"
-              >Import</a
-              >
-            </div>
-          </div>
+        <div class="d-flex card-header justify-content-between align-items-center border-bottom border-dashed">
+          <h4 class="card-title">Recent Detection Logs</h4>
         </div>
         <div class="card-body py-2 px-0">
-          <div
-            class="px-2"
-            data-simplebar
-            style="height: 270px"
-          >
-            <div
-              class="d-flex justify-content-between align-items-center p-2"
-            >
-                                            <span class="align-middle fw-medium"
-                                            >Chrome</span
-                                            >
-              <span class="fw-semibold text-muted"
-              >62.5%</span
-              >
-              <span class="fw-semibold text-muted"
-              >5.06k</span
-              >
-            </div>
-
-            <div
-              class="d-flex justify-content-between align-items-center p-2"
-            >
-                                            <span class="align-middle fw-medium"
-                                            >Firefox</span
-                                            >
-              <span class="fw-semibold text-muted"
-              >12.3%</span
-              >
-              <span class="fw-semibold text-muted"
-              >1.5k</span
-              >
-            </div>
-
-            <div
-              class="d-flex justify-content-between align-items-center p-2"
-            >
-                                            <span class="align-middle fw-medium"
-                                            >Safari</span
-                                            >
-              <span class="fw-semibold text-muted"
-              >9.86%</span
-              >
-              <span class="fw-semibold text-muted"
-              >1.03k</span
-              >
-            </div>
-
-            <div
-              class="d-flex justify-content-between align-items-center p-2"
-            >
-                                            <span class="align-middle fw-medium"
-                                            >Brave</span
-                                            >
-              <span class="fw-semibold text-muted"
-              >3.15%</span
-              >
-              <span class="fw-semibold text-muted"
-              >0.3k</span
-              >
-            </div>
-
-            <div
-              class="d-flex justify-content-between align-items-center p-2"
-            >
-                                            <span class="align-middle fw-medium"
-                                            >Opera</span
-                                            >
-              <span class="fw-semibold text-muted"
-              >3.01%</span
-              >
-              <span class="fw-semibold text-muted"
-              >1.58k</span
-              >
-            </div>
-
-            <div
-              class="d-flex justify-content-between align-items-center p-2"
-            >
-                                            <span class="align-middle fw-medium"
-                                            >Falkon</span
-                                            >
-              <span class="fw-semibold text-muted"
-              >2.8%</span
-              >
-              <span class="fw-semibold text-muted"
-              >0.01k</span
-              >
-            </div>
-
-            <div
-              class="d-flex justify-content-between align-items-center p-2"
-            >
-                                            <span class="align-middle fw-medium"
-                                            >Other</span
-                                            >
-              <span class="fw-semibold text-muted"
-              >6.38%</span
-              >
-              <span class="fw-semibold text-muted"
-              >3.6k</span
-              >
-            </div>
+          <div class="px-2" data-simplebar style="height: 270px" id="detection-logs-container">
+            <!-- Detection logs will be inserted here -->
           </div>
         </div>
       </div>
     </div>
     <div class="col-lg-8">
       <div class="card">
-        <div
-          class="card-header d-flex align-items-center justify-content-between gap-2"
-        >
-          <h4 class="card-title flex-grow-1">
-            Recent Action Logs
-          </h4>
-          <div>
-            <a
-              href="#"
-              class="btn btn-sm btn-soft-primary"
-            >View All</a
-            >
-          </div>
+        <div class="card-header d-flex align-items-center justify-content-between gap-2">
+          <h4 class="card-title flex-grow-1">Recent Action Logs</h4>
         </div>
         <div class="table-responsive">
-          <table
-            class="table table-hover table-nowrap table-centered m-0"
-          >
+          <table class="table table-hover table-nowrap table-centered m-0">
             <thead class="bg-light bg-opacity-50">
             <tr>
-              <th class="text-muted py-1">
-                Page Path
-              </th>
-              <th class="text-muted py-1">
-                Page Views
-              </th>
-              <th class="text-muted py-1">
-                Avg Time on Page
-              </th>
-              <th class="text-muted py-1">
-                Exit Rate
-              </th>
+              <th class="text-muted py-1">Page Path</th>
+              <th class="text-muted py-1">Page Views</th>
+              <th class="text-muted py-1">Avg Time on Page</th>
+              <th class="text-muted py-1">Exit Rate</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-              <td>
-                <a
-                  href="#"
-                  class="text-muted"
-                >reback/dashboard.html</a
-                >
-              </td>
-              <td>4265</td>
-              <td>09m:45s</td>
-              <td>
-                                                    <span
-                                                      class="badge badge-soft-danger"
-                                                    >20.4%</span
-                                                    >
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="#"
-                  class="text-muted"
-                >reback/chat.html</a
-                >
-              </td>
-              <td>2584</td>
-              <td>05m:02s</td>
-              <td>
-                                                    <span
-                                                      class="badge badge-soft-warning"
-                                                    >12.25%</span
-                                                    >
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="#"
-                  class="text-muted"
-                >reback/auth-login.html</a
-                >
-              </td>
-              <td>3369</td>
-              <td>04m:25s</td>
-              <td>
-                                                    <span
-                                                      class="badge badge-soft-success"
-                                                    >5.2%</span
-                                                    >
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="#"
-                  class="text-muted"
-                >reback/email.html</a
-                >
-              </td>
-              <td>985</td>
-              <td>02m:03s</td>
-              <td>
-                                                    <span
-                                                      class="badge badge-soft-danger"
-                                                    >64.2%</span
-                                                    >
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="#"
-                  class="text-muted"
-                >reback/social.html</a
-                >
-              </td>
-              <td>653</td>
-              <td>15m:56s</td>
-              <td>
-                                                    <span
-                                                      class="badge badge-soft-success"
-                                                    >2.4%</span
-                                                    >
-              </td>
-            </tr>
+            <tbody id="action-logs-table">
+              <!-- Action logs will be inserted here -->
             </tbody>
           </table>
         </div>
@@ -565,10 +191,150 @@
   <script src="{% static '/vendor/jsvectormap/maps/world-merc.js' %}"></script>
   <script src="{% static '/vendor/jsvectormap/maps/world.js' %}"></script>
   <script src="{% static '/vendor/apexcharts/apexcharts.min.js' %}"></script>
+  
+  <!-- ===== DEMO DASHBOARD DATA (STATIC JSON) ===== -->
+  <script>
+    // Pie: Defect Type Breakdown
+    const defectTypeBreakdown = {
+      labels: ["Scratch", "Dent"],
+      series: [70, 30],
+      colors: ["#de3131", "#202a38"]
+    };
 
-  <!-- Dashboard Js -->
-  <script src="{% static '/js/pages/dashboard.analytics.js' %}"></script>
-  <script src="{% static 'js/components/apexchart-pie.js' %}"></script>
-  <script src="{% static 'js/components/apexchart-bar.js' %}"></script>
-  <script src="{% static 'js/components/apexchart-column.js' %}"></script>
+    // Bar: Defects Detected Per Month
+    const defectsPerMonth = {
+      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      series: [{ name: "Defects", data: [2, 4, 6, 4, 7, 5, 8, 6, 5, 7, 9, 8] }],
+      color: "#de3131"
+    };
+
+    // Column: Defect Source Breakdown
+    const defectSourceBreakdown = {
+      categories: ["Operator Error", "Machine", "Material"],
+      series: [{ name: "Count", data: [15, 10, 8] }],
+      color: "#202a38"
+    };
+
+    // Donut: Defect-Free vs Defective
+    const sheetQualityDistribution = {
+      labels: ["Defect-Free", "Defective"],
+      series: [900, 100],
+      colors: ["#202a38", "#de3131"]
+    };
+
+    // Bar: Rejection Per Month
+    const rejectionPerMonth = {
+      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      series: [{ name: "Rejections", data: [1, 0, 2, 1, 3, 1, 0, 2, 1, 0, 2, 1] }],
+      color: "#de3131"
+    };
+
+    // Column: Products per Month
+    const productsPerMonth = {
+      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      series: [{ name: "Products", data: [100, 110, 95, 105, 120, 115, 90, 100, 105, 110, 120, 115] }],
+      color: "#202a38"
+    };
+
+    // Detection Logs
+    const recentDetectionLogs = [
+      { type: "Scratch", percent: "62.5%", count: 5060 },
+      { type: "Dent", percent: "12.3%", count: 1500 },
+      { type: "Scratch", percent: "9.86%", count: 1030 },
+      { type: "Dent", percent: "3.15%", count: 300 },
+      { type: "Scratch", percent: "3.01%", count: 1580 },
+      { type: "Dent", percent: "2.8%", count: 10 },
+      { type: "Scratch", percent: "6.38%", count: 360 }
+    ];
+
+    // Action Logs
+    const recentActionLogs = [
+      { path: "reback/dashboard.html", views: 4265, avgTime: "09m:45s", exitRate: "20.4%" },
+      { path: "reback/chat.html", views: 2584, avgTime: "05m:02s", exitRate: "12.25%" },
+      { path: "reback/auth-login.html", views: 3369, avgTime: "04m:25s", exitRate: "5.2%" },
+      { path: "reback/email.html", views: 985, avgTime: "02m:03s", exitRate: "64.2%" },
+      { path: "reback/social.html", views: 653, avgTime: "15m:56s", exitRate: "2.4%" }
+    ];
+  </script>
+  <!-- ===== Render the charts with JSON data above ===== -->
+  <script>
+    // Pie Chart
+    new ApexCharts(document.querySelector("#monochrome-pie"), {
+      chart: { type: 'pie', height: 270 },
+      labels: defectTypeBreakdown.labels,
+      series: defectTypeBreakdown.series,
+      colors: defectTypeBreakdown.colors,
+      legend: { position: 'bottom' }
+    }).render();
+
+    // Bar Chart: Defects Detected Per Month
+    new ApexCharts(document.querySelector("#basic-bar"), {
+      chart: { type: 'bar', height: 270 },
+      series: defectsPerMonth.series,
+      xaxis: { categories: defectsPerMonth.categories },
+      colors: [defectsPerMonth.color],
+      plotOptions: { bar: { borderRadius: 6 } }
+    }).render();
+
+    // Column Chart: Defect Source Breakdown
+    new ApexCharts(document.querySelector("#datalabels-column"), {
+      chart: { type: 'bar', height: 270 },
+      series: defectSourceBreakdown.series,
+      xaxis: { categories: defectSourceBreakdown.categories },
+      colors: [defectSourceBreakdown.color],
+      plotOptions: { bar: { horizontal: false, borderRadius: 6 } }
+    }).render();
+
+    // Donut: Defect-Free vs. Defective
+    new ApexCharts(document.querySelector("#simple-donut"), {
+      chart: { type: 'donut', height: 270 },
+      labels: sheetQualityDistribution.labels,
+      series: sheetQualityDistribution.series,
+      colors: sheetQualityDistribution.colors,
+      legend: { position: 'bottom' }
+    }).render();
+
+    // Bar: Rejection Per Month
+    new ApexCharts(document.querySelector("#rejection-bar"), {
+      chart: { type: 'bar', height: 270 },
+      series: rejectionPerMonth.series,
+      xaxis: { categories: rejectionPerMonth.categories },
+      colors: [rejectionPerMonth.color],
+      plotOptions: { bar: { borderRadius: 6 } }
+    }).render();
+
+    // Column: Products per Month
+    new ApexCharts(document.querySelector("#products-column"), {
+      chart: { type: 'bar', height: 270 },
+      series: productsPerMonth.series,
+      xaxis: { categories: productsPerMonth.categories },
+      colors: [productsPerMonth.color],
+      plotOptions: { bar: { borderRadius: 6 } }
+    }).render();
+
+    // Detection Logs
+    const detectionLogsContainer = document.getElementById("detection-logs-container");
+    detectionLogsContainer.innerHTML = recentDetectionLogs.map(log =>
+      `<div class="d-flex justify-content-between align-items-center p-2">
+        <span class="align-middle fw-medium">${log.type}</span>
+        <span class="fw-semibold text-muted">${log.percent}</span>
+        <span class="fw-semibold text-muted">${log.count.toLocaleString()}</span>
+      </div>`
+    ).join('');
+
+    // Action Logs
+    const actionLogsTable = document.getElementById("action-logs-table");
+    actionLogsTable.innerHTML = recentActionLogs.map(log =>
+      `<tr>
+        <td><a href="#" class="text-muted">${log.path}</a></td>
+        <td>${log.views}</td>
+        <td>${log.avgTime}</td>
+        <td>
+          <span class="badge ${parseFloat(log.exitRate) > 20 ? "badge-soft-danger" : parseFloat(log.exitRate) > 10 ? "badge-soft-warning" : "badge-soft-success"}">
+            ${log.exitRate}
+          </span>
+        </td>
+      </tr>`
+    ).join('');
+  </script>
 {% endblock extra_javascript %}

@@ -1,0 +1,103 @@
+{% extends 'layout_vertical.html' %}
+{% block title %}Scan Log{% endblock %}
+{% block page_content %}
+<form method="get" class="mb-3">
+  <div class="row g-2 align-items-end">
+    <div class="col-md-3">
+      <label for="date_from" class="form-label mb-1">Date From</label>
+      <input type="date" class="form-control" id="date_from" name="date_from" value="{{ filters.date_from }}">
+    </div>
+    <div class="col-md-3">
+      <label for="date_to" class="form-label mb-1">Date To</label>
+      <input type="date" class="form-control" id="date_to" name="date_to" value="{{ filters.date_to }}">
+    </div>
+    <div class="col-md-2">
+      <label for="shift_start" class="form-label mb-1">Shift Start</label>
+      <input type="time" class="form-control" id="shift_start" name="shift_start" value="{{ filters.shift_start }}">
+    </div>
+    <div class="col-md-2">
+      <label for="shift_end" class="form-label mb-1">Shift End</label>
+      <input type="time" class="form-control" id="shift_end" name="shift_end" value="{{ filters.shift_end }}">
+    </div>
+    <div class="col-md-2">
+      <label for="operator" class="form-label mb-1">Operator</label>
+      <input type="text" class="form-control" id="operator" name="operator" placeholder="Operator" value="{{ filters.operator }}">
+    </div>
+  </div>
+  <div class="row g-2 mt-2 align-items-end">
+    <div class="col-md-3">
+      <label for="product_id" class="form-label mb-1">Product ID</label>
+      <input type="text" class="form-control" id="product_id" name="product_id" placeholder="Product ID" value="{{ filters.product_id }}">
+    </div>
+    <div class="col-md-3">
+      <label for="machine_id" class="form-label mb-1">Machine ID</label>
+      <input type="text" class="form-control" id="machine_id" name="machine_id" placeholder="Machine ID" value="{{ filters.machine_id }}">
+    </div>
+    <div class="col-md-3">
+      <label for="search" class="form-label mb-1">Search</label>
+      <input type="text" class="form-control" id="search" name="search" placeholder="Search..." value="{{ filters.search }}">
+    </div>
+    <div class="col-md-3 d-flex gap-2">
+      <button type="submit" class="btn btn-primary w-100">Filter</button>
+      <button type="submit" name="download" value="1" class="btn btn-outline-secondary w-100">Download</button>
+    </div>
+  </div>
+</form>
+
+<h2 class="text-center my-3">Scan Log</h2>
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Machine ID</th>
+                <th>Operator</th>
+                <th>Date Scanned</th>
+                <th>Time</th>
+                <th>Condition</th>
+                <th>Number of Defects</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.product_id }}</td>
+                <td>{{ log.machine_id }}</td>
+                <td>{{ log.operator }}</td>
+                <td>{{ log.date_scanned }}</td>
+                <td>{{ log.time_scanned }}</td>
+                <td>{{ log.condition }}</td>
+                <td>{{ log.num_defects }}</td>
+                <td>
+                    {% if log.image %}
+                        <img src="{{ log.image.url }}" alt="Scan Image" style="width:40px;height:40px;object-fit:cover;">
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'pages:scan-log-view' log.id %}" class="btn btn-sm btn-info">View</a>
+                    <a href="{% url 'pages:scan-log-edit' log.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'pages:scan-log-delete' log.id %}" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="#" class="btn btn-sm btn-secondary">Tag QC</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="9" class="text-center">No scan logs found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<!-- Pagination -->
+{% if total > page_size %}
+<nav>
+  <ul class="pagination">
+    {% for i in page_range %}
+      <li class="page-item {% if page == i %}active{% endif %}">
+        <a class="page-link" href="?{% for k, v in filters.items %}{% if v %}{{ k }}={{ v }}&{% endif %}{% endfor %}page={{ i }}">{{ i }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}
+{% endblock %}

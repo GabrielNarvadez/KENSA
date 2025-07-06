@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 
+
 class SteelSheet(models.Model):
     lot_number = models.CharField(max_length=100)        # SKU or Lot Number
     part_name = models.CharField(max_length=200)
@@ -41,3 +42,25 @@ class SteelSheetInspection(models.Model):
 
     def __str__(self):
         return f"Inspection for {self.sheet} on {self.inspection_date}"
+    
+
+
+class ScanLog(models.Model):
+    product_id = models.CharField(max_length=100)
+    machine_id = models.CharField(max_length=100)
+    operator = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name="scanlogs"
+    )
+    date_scanned = models.DateField()
+    time_scanned = models.TimeField()
+    condition = models.CharField(max_length=100)  # e.g. 'OK', 'Defective', etc.
+    num_defects = models.PositiveIntegerField(default=0)
+    image = models.ImageField(upload_to='scan_images/', null=True, blank=True)
+    qc_manager_tagged = models.ForeignKey(
+        settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL, related_name="qc_tagged_scans"
+    )
+    notes = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.product_id} - {self.machine_id} @ {self.date_scanned} {self.time_scanned}"
