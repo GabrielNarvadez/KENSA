@@ -1,0 +1,277 @@
+{% extends 'layout_vertical.html' %}
+{% load widget_tweaks %}
+{% load static i18n %}
+
+{% block title %}
+    {% if form.instance.pk %}Edit Inspection{% else %}New Inspection{% endif %}
+{% endblock %}
+
+{% block page_title %}
+    {% include "partials/page-title.html" with page_title="Steel Sheet Inspection" sub_title="QC Inspector" %}
+{% endblock %}
+
+{% block page_content %}
+<div class="row justify-content-center">
+    <div class="col-md-12">
+
+        <form method="post" class="mb-4" id="mainForm">
+            {% csrf_token %}
+            <!-- Sheet/Inspector selection row -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Select Steel Sheet</label>
+                    <select name="sheet" class="form-select" id="id_sheet_select" onchange="document.getElementById('mainForm').submit();">
+                        <option value="">-- Select a sheet --</option>
+                        {% for sheet in form.fields.sheet.queryset %}
+                            <option value="{{ sheet.pk }}" {% if form.sheet.value|stringformat:"s" == sheet.pk|stringformat:"s" %}selected{% endif %}>
+                                {{ sheet.lot_number }} - {{ sheet.part_name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Inspector</label>
+                    <select name="inspector" class="form-select">
+                        {% for user in users %}
+                            <option value="{{ user.id }}"
+                                {% if form.inspector.value|stringformat:"s" == user.id|stringformat:"s" or user.id == request.user.id %}
+                                    selected
+                                {% endif %}
+                            >{{ user.get_full_name|default:user.username }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Preview card -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4 class="mb-0">Steel Sheet Details</h4>
+                </div>
+                <div class="card-body">
+                    {% if selected_sheet %}
+                        <dl class="row">
+                            <dt class="col-sm-3">Lot Number</dt>
+                            <dd class="col-sm-9">{{ selected_sheet.lot_number }}</dd>
+                            <dt class="col-sm-3">Part Name</dt>
+                            <dd class="col-sm-9">{{ selected_sheet.part_name }}</dd>
+                            <dt class="col-sm-3">Thickness</dt>
+                            <dd class="col-sm-9">{{ selected_sheet.thickness }}</dd>
+                            <dt class="col-sm-3">Width</dt>
+                            <dd class="col-sm-9">{{ selected_sheet.width }}</dd>
+                            <dt class="col-sm-3">Length</dt>
+                            <dd class="col-sm-9">{{ selected_sheet.length }}</dd>
+                            <dt class="col-sm-3">Category</dt>
+                            <dd class="col-sm-9">{{ selected_sheet.category }}</dd>
+                            <dt class="col-sm-3">Quantity</dt>
+                            <dd class="col-sm-9">{{ selected_sheet.quantity }}</dd>
+                            <dt class="col-sm-3">Location</dt>
+                            <dd class="col-sm-9">{{ selected_sheet.location }}</dd>
+                            <!-- Add more fields if needed -->
+                        </dl>
+                    {% else %}
+                        <div class="alert alert-info">
+                            Select a steel sheet to preview its details.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Inspection table -->
+            <div class="row">
+                <div class="col-lg-7">
+                    <table class="table table-bordered align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width:30%">Inspection Checkpoint</th>
+                                <th style="width:25%">Acceptance</th>
+                                <th style="width:35%">Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Surface Deformation -->
+                            <tr>
+                                <td>Surface Deformation</td>
+                                <td>
+                                    <select name="surface_deformation" class="form-select">
+                                        <option value="">-- Select --</option>
+                                        <option value="acceptable" {% if form.surface_deformation.value == "acceptable" %}selected{% endif %}>Acceptable</option>
+                                        <option value="conditional" {% if form.surface_deformation.value == "conditional" %}selected{% endif %}>Conditional</option>
+                                        <option value="reject" {% if form.surface_deformation.value == "reject" %}selected{% endif %}>Reject</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" name="surface_deformation_comment" class="form-control"
+                                           value="{{ form.data.surface_deformation_comment|default_if_none:'' }}">
+                                </td>
+                            </tr>
+                            <!-- Scratches (%) -->
+                            <tr>
+                                <td>Scratches (%)</td>
+                                <td>
+                                    <select name="scratches_percent_acceptance" class="form-select">
+                                        <option value="">-- Select --</option>
+                                        <option value="acceptable" {% if form.data.scratches_percent_acceptance == "acceptable" %}selected{% endif %}>Acceptable</option>
+                                        <option value="conditional" {% if form.data.scratches_percent_acceptance == "conditional" %}selected{% endif %}>Conditional</option>
+                                        <option value="reject" {% if form.data.scratches_percent_acceptance == "reject" %}selected{% endif %}>Reject</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" name="scratches_comment" class="form-control"
+                                           value="{{ form.data.scratches_comment|default_if_none:'' }}">
+                                </td>
+                            </tr>
+                            <!-- Dent -->
+                            <tr>
+                                <td>Dent</td>
+                                <td>
+                                    <select name="dent" class="form-select">
+                                        <option value="">-- Select --</option>
+                                        <option value="acceptable" {% if form.dent.value == "acceptable" %}selected{% endif %}>Acceptable</option>
+                                        <option value="conditional" {% if form.dent.value == "conditional" %}selected{% endif %}>Conditional</option>
+                                        <option value="reject" {% if form.dent.value == "reject" %}selected{% endif %}>Reject</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" name="dent_comment" class="form-control"
+                                           value="{{ form.data.dent_comment|default_if_none:'' }}">
+                                </td>
+                            </tr>
+                            <!-- Stain -->
+                            <tr>
+                                <td>Stain</td>
+                                <td>
+                                    <select name="stain" class="form-select">
+                                        <option value="">-- Select --</option>
+                                        <option value="acceptable" {% if form.stain.value == "acceptable" %}selected{% endif %}>Acceptable</option>
+                                        <option value="conditional" {% if form.stain.value == "conditional" %}selected{% endif %}>Conditional</option>
+                                        <option value="reject" {% if form.stain.value == "reject" %}selected{% endif %}>Reject</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" name="stain_comment" class="form-control"
+                                           value="{{ form.data.stain_comment|default_if_none:'' }}">
+                                </td>
+                            </tr>
+                            <!-- Conductivity Test -->
+                            <tr>
+                                <td>Conductivity Test</td>
+                                <td>
+                                    <select name="conductivity_test" class="form-select">
+                                        <option value="">-- Select --</option>
+                                        <option value="acceptable" {% if form.conductivity_test.value == "acceptable" %}selected{% endif %}>Acceptable</option>
+                                        <option value="conditional" {% if form.conductivity_test.value == "conditional" %}selected{% endif %}>Conditional</option>
+                                        <option value="reject" {% if form.conductivity_test.value == "reject" %}selected{% endif %}>Reject</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" name="conductivity_comment" class="form-control"
+                                           value="{{ form.data.conductivity_comment|default_if_none:'' }}">
+                                </td>
+                            </tr>
+                            <!-- Decision -->
+                            <tr>
+                                <td>Decision</td>
+                                <td>
+                                    <select name="decision" class="form-select">
+                                        <option value="">-- Select --</option>
+                                        <option value="acceptable" {% if form.decision.value == "acceptable" %}selected{% endif %}>Acceptable</option>
+                                        <option value="conditional" {% if form.decision.value == "conditional" %}selected{% endif %}>Conditional</option>
+                                        <option value="reject" {% if form.decision.value == "reject" %}selected{% endif %}>Reject</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" name="decision_comment" class="form-control"
+                                           value="{{ form.data.decision_comment|default_if_none:'' }}">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-5">
+                    <!-- Acceptance Criteria Table -->
+                    <div class="mb-3">
+                        <h5>Scratch Types and Acceptance Criteria</h5>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Scratch Type</th>
+                                    <th>Depth</th>
+                                    <th>Acceptance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scratch-criteria-table">
+                                <tr id="light-scratch-row">
+                                    <td>Light surface scratch</td>
+                                    <td>Not visible to fingernail</td>
+                                    <td class="bg-success text-white">
+                                        <i class="bx bx-check"></i> Acceptable
+                                    </td>
+                                </tr>
+                                <tr id="moderate-scratch-row">
+                                    <td>Moderate scratch</td>
+                                    <td>Barely catches fingernail</td>
+                                    <td class="bg-warning">
+                                        <i class="bx bx-error"></i> Conditional (Check depth)
+                                    </td>
+                                </tr>
+                                <tr id="deep-scratch-row">
+                                    <td>Deep scratch</td>
+                                    <td>Catches fingernail easily</td>
+                                    <td class="bg-danger text-white">
+                                        <i class="bx bx-x"></i> Reject
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id="scratch-warning" class="alert alert-warning d-none">
+                            Please check the scratch depth and provide additional comments.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Notes</label>
+                {{ form.notes|add_class:"form-control" }}
+            </div>
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'pages:steel-sheet-inspection-list' %}" class="btn btn-secondary">Back to List</a>
+                <button type="submit" class="btn btn-primary">
+                    {% if form.instance.pk %}Update{% else %}Save{% endif %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_javascript %}
+<script>
+// Example: Highlight criteria table based on scratch input (implement real logic in future)
+document.addEventListener('DOMContentLoaded', function() {
+    const scratchInput = document.querySelector('input[name="scratches_percent"]');
+    if (scratchInput) {
+        scratchInput.addEventListener('input', function() {
+            const percent = parseFloat(scratchInput.value);
+            document.getElementById('light-scratch-row').classList.remove('table-active');
+            document.getElementById('moderate-scratch-row').classList.remove('table-active');
+            document.getElementById('deep-scratch-row').classList.remove('table-active');
+            document.getElementById('scratch-warning').classList.add('d-none');
+            if (!isNaN(percent)) {
+                // TODO: Adjust logic according to your acceptance criteria!
+                if (percent < 5) {
+                    document.getElementById('light-scratch-row').classList.add('table-active');
+                } else if (percent < 20) {
+                    document.getElementById('moderate-scratch-row').classList.add('table-active');
+                    document.getElementById('scratch-warning').classList.remove('d-none');
+                } else {
+                    document.getElementById('deep-scratch-row').classList.add('table-active');
+                    document.getElementById('scratch-warning').classList.remove('d-none');
+                }
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

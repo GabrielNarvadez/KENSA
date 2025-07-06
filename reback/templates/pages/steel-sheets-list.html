@@ -1,0 +1,141 @@
+{% extends 'layout_vertical.html' %}
+
+{% load static i18n %}
+
+{% block html_attribute %}{% endblock html_attribute %}
+
+{% block title %}Steel Sheets{% endblock title %}
+
+{% block page_title %}
+{% include "partials/page-title.html" with page_title='Steel Sheets' sub_title='Ecommerce' %}
+{% endblock page_title %}
+
+{% block page_content %}
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-wrap justify-content-between gap-3">
+                <form method="get" class="d-flex align-items-center mb-3">
+                    <input type="search" name="search" value="{{ search }}" class="form-control" placeholder="Search ..." style="width: 300px;">
+                    <button type="submit" class="btn btn-secondary ms-2">Search</button>
+                </form>
+
+                    <div>
+                        <a href="{% url 'pages:dynamic_pages' template_name='steel-sheets-add' %}" class="btn btn-primary d-flex align-items-center">
+                            <i class="bx bx-plus me-1"></i>Add Steel Sheet
+                        </a>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <div>
+                <div class="table-responsive table-centered">
+
+                    <table class="table text-nowrap mb-0">
+<thead class="bg-light bg-opacity-50">
+    <tr>
+        <th><a href="?sort=lot_number">Lot Number</a></th>
+        <th><a href="?sort=part_name">Part Name</a></th>
+        <th><a href="?sort=thickness">Thickness</a></th>
+        <th><a href="?sort=width">Width</a></th>
+        <th><a href="?sort=length">Length</a></th>
+        <th><a href="?sort=category">Category</a></th>
+        <th><a href="?sort=quantity">Quantity</a></th>
+        <th><a href="?sort=location">Location</a></th>
+        <th><a href="?sort=created_at">Created At</a></th>
+        <th>Action</th>
+    </tr>
+</thead>
+<tbody>
+    {% for sheet in sheets %}
+        <tr>
+            <td>{{ sheet.lot_number }}</td>
+            <td>{{ sheet.part_name }}</td>
+            <td>{{ sheet.thickness }}</td>
+            <td>{{ sheet.width }}</td>
+            <td>{{ sheet.length }}</td>
+            <td>{{ sheet.category }}</td>
+            <td>{{ sheet.quantity }}</td>
+            <td>{{ sheet.location }}</td>
+            <td>{{ sheet.created_at|date:"Y-m-d H:i" }}</td>
+            <td>
+                <a href="{% url 'pages:steel-sheet-edit' sheet.pk %}" class="btn btn-sm btn-soft-secondary me-1">
+                    <i class="bx bx-edit fs-18"></i>
+                </a>
+                <form method="post" action="{% url 'pages:steel-sheet-delete' sheet.pk %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-soft-danger"
+                        onclick="return confirm('Are you sure you want to delete this steel sheet?');">
+                        <i class="bx bx-trash fs-18"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="10">No steel sheets found.</td></tr>
+    {% endfor %}
+</tbody>
+
+
+
+
+                        <!-- end tbody -->
+                    </table>
+                    <!-- end table -->
+                </div>
+                <!-- table responsive -->
+<div class="align-items-center justify-content-between row g-0 text-center text-sm-start p-3 border-top">
+    <div class="col-sm">
+        <div class="text-muted">
+            {% if sheets and sheets.paginator.count > 0 %}
+                Showing
+                <span class="fw-semibold">{{ sheets.start_index }}</span>
+                to
+                <span class="fw-semibold">{{ sheets.end_index }}</span>
+                of
+                <span class="fw-semibold">{{ sheets.paginator.count }}</span>
+                Results
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-sm-auto mt-3 mt-sm-0">
+        <ul class="pagination pagination-rounded m-0">
+            {% if sheets.has_previous %}
+                <li class="page-item">
+                    <a href="?page={{ sheets.previous_page_number }}" class="page-link"><i class="bx bx-left-arrow-alt"></i></a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link"><i class="bx bx-left-arrow-alt"></i></span>
+                </li>
+            {% endif %}
+            {% for num in sheets.paginator.page_range %}
+                <li class="page-item {% if sheets.number == num %}active{% endif %}">
+                    <a href="?page={{ num }}" class="page-link">{{ num }}</a>
+                </li>
+            {% endfor %}
+            {% if sheets.has_next %}
+                <li class="page-item">
+                    <a href="?page={{ sheets.next_page_number }}" class="page-link"><i class="bx bx-right-arrow-alt"></i></a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link"><i class="bx bx-right-arrow-alt"></i></span>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+
+{% endblock page_content %}

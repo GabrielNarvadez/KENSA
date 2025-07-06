@@ -1,0 +1,83 @@
+<form method="post" action="{% url 'your_save_inspection_sheet_url' %}">
+    {% csrf_token %}
+    <h4>Inspection Sheet for Raw Materials</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="select_all" /></th>
+                <th>Lot Number</th>
+                <th>Part Name</th>
+                <th>Thickness</th>
+                <th>Width</th>
+                <th>Length</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Location</th>
+                <th>Date Received</th>
+                <th>Inspector</th>
+                <th>Surface Defect</th>
+                <th>Scratches %</th>
+                <th>Dent</th>
+                <th>Stain</th>
+                <th>Deformation</th>
+                <th>Conductivity Test</th>
+                <th>Approve</th>
+                <th>Disapprove</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td><input type="checkbox" name="select_item" value="{{ item.id }}"></td>
+                <td>{{ item.lot_number }}</td>
+                <td>{{ item.part_name }}</td>
+                <td>{{ item.thickness }}</td>
+                <td>{{ item.width }}</td>
+                <td>{{ item.length }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.location }}</td>
+                <td>{{ item.date_received|date:"Y-m-d" }}</td>
+                <td>{{ inspector_name }}</td>
+                <td>
+                    <input type="checkbox" name="surface_defect_{{ item.id }}">
+                </td>
+                <td>
+                    <input type="number" name="scratches_{{ item.id }}" min="0" max="100" step="1" class="form-control" style="width:70px;">
+                </td>
+                <td><input type="checkbox" name="dent_{{ item.id }}"></td>
+                <td><input type="checkbox" name="stain_{{ item.id }}"></td>
+                <td><input type="checkbox" name="deformation_{{ item.id }}"></td>
+                <td>
+                    <select name="conductivity_{{ item.id }}" class="form-select">
+                        <option value="pass">Pass</option>
+                        <option value="fail">Fail</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="radio" name="decision_{{ item.id }}" value="approve">
+                </td>
+                <td>
+                    <input type="radio" name="decision_{{ item.id }}" value="disapprove">
+                </td>
+                <td>
+                    <input type="text" name="notes_{{ item.id }}" class="form-control" style="width:150px;">
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="mt-3">
+        <label>Inspector Name:</label>
+        <input type="text" name="inspector" value="{{ inspector_name }}" required>
+        <label>Date:</label>
+        <input type="date" name="inspection_date" value="{{ today|date:'Y-m-d' }}" required>
+        <!-- Optionally, digital signature pad can be added here -->
+    </div>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-success">Save to Database</button>
+        <button type="button" onclick="window.print()" class="btn btn-secondary">Export as PDF</button>
+        <!-- Or use a JS/PDF library for nice exports -->
+    </div>
+</form>

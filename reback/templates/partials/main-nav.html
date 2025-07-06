@@ -127,15 +127,15 @@
                           icon="iconamoon:shopping-bag-duotone"
                         ></iconify-icon>
                     </span>
-          <span class="nav-text"> Inspection </span>
+          <span class="nav-text"> Steel Sheets </span>
         </a>
         <div class="collapse" id="sidebarEcommerce">
           <ul class="nav sub-navbar-nav">
             <li class="sub-nav-item">
               <a
                 class="sub-nav-link"
-                href="{% url 'pages:dynamic_pages' template_name='apps-ecommerce-product-list' %}"
-              >Products</a
+                href="{% url 'pages:dynamic_pages' template_name='steel-sheets-list' %}"
+              >Steel Sheets List</a
               >
             </li>
             {% comment %} <li class="sub-nav-item">
@@ -145,13 +145,7 @@
               >Product Details</a
               >
             </li> {% endcomment %}
-            <li class="sub-nav-item">
-              <a
-                class="sub-nav-link"
-                href="{% url 'pages:dynamic_pages' template_name='apps-ecommerce-product-add' %}"
-              >Create Product</a
-              >
-            </li>
+
 
             {% comment %} <li class="sub-nav-item">
               <a
@@ -179,15 +173,23 @@
             <li class="sub-nav-item">
               <a
                 class="sub-nav-link"
-                href="{% url 'pages:dynamic_pages' template_name='apps-ecommerce-order-detail' %}"
-              >Sheet Status</a
+                href="{% url 'pages:dynamic_pages' template_name='steel-sheets-individual-status' %}"
+              >Individual Status</a
               >
             </li>
 
             <li class="sub-nav-item">
               <a
                 class="sub-nav-link"
-                href="{% url 'pages:dynamic_pages' template_name='apps-ecommerce-inventory' %}"
+                href="{% url 'pages:dynamic_pages' template_name='steel-sheets-add' %}"
+              >Scan Log</a
+              >
+            </li>
+
+            <li class="sub-nav-item">
+              <a
+                class="sub-nav-link"
+                href="{% url 'pages:dynamic_pages' template_name='steel-sheets-export' %}"
               >Export Data</a
               >
             </li>
@@ -195,7 +197,8 @@
         </div>
       </li>
 
-            <li class="nav-item">
+
+      <li class="nav-item">
               <a
                 class="nav-link menu-arrow"
                 href="#sidebarTables"
@@ -214,18 +217,19 @@
         <div class="collapse" id="sidebarTables">
           <ul class="nav sub-navbar-nav">
             <li class="sub-nav-item">
-              <a class="sub-nav-link" href="{% url 'pages:dynamic_pages' template_name='tables-basic' %}"
-              >Basic Tables</a
+              <a class="sub-nav-link" href="{% url 'pages:dynamic_pages' template_name='steel-sheet-inspection-list' %}"
+              >Inspection List</a
               >
             </li>
             <li class="sub-nav-item">
-              <a class="sub-nav-link" href="{% url 'pages:dynamic_pages' template_name='tables-gridjs' %}"
-              >Grid Js</a
+              <a class="sub-nav-link" href="{% url 'pages:dynamic_pages' template_name='steel-sheet-inspection-form' %}"
+              >Inspection Form</a
               >
             </li>
           </ul>
         </div>
       </li>
+
 
       {% comment %} <li class="nav-item">
         <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='apps-chat' %}">

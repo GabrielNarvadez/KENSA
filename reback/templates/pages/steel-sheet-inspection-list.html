@@ -1,0 +1,90 @@
+{% extends 'layout_vertical.html' %}
+{% load static i18n %}
+
+{% block title %}Steel Sheet Inspections{% endblock title %}
+
+{% block page_title %}
+    {% include "partials/page-title.html" with page_title='Steel Sheet Inspections' sub_title='Quality Control' %}
+{% endblock page_title %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="mb-0">Inspections</h4>
+                    <a href="{% url 'pages:steel-sheet-inspection-create' %}" class="btn btn-primary">
+                        <i class="bx bx-plus"></i> New Inspection
+                    </a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-centered table-striped mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Sheet</th>
+                                <th>Inspector</th>
+                                <th>Date</th>
+                                <th>Deformation</th>
+                                <th>Scratches %</th>
+                                <th>Dent</th>
+                                <th>Stain</th>
+                                <th>Conductivity</th>
+                                <th>Decision</th>
+                                <th>Notes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for inspection in inspections %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ inspection.sheet }}</td>
+                                <td>{{ inspection.inspector }}</td>
+                                <td>{{ inspection.inspection_date }}</td>
+                                <td>
+                                    {% if inspection.surface_deformation %}Yes{% else %}No{% endif %}
+                                </td>
+                                <td>{{ inspection.scratches_percent }}</td>
+                                <td>
+                                    {% if inspection.dent %}Yes{% else %}No{% endif %}
+                                </td>
+                                <td>
+                                    {% if inspection.stain %}Yes{% else %}No{% endif %}
+                                </td>
+                                <td>{{ inspection.get_conductivity_test_display }}</td>
+                                <td>
+                                    {% if inspection.decision == "approve" %}
+                                        <span class="badge bg-success">Approve</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">Disapprove</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ inspection.notes|default_if_none:"-" }}</td>
+                                <td>
+                                    <a href="{% url 'pages:steel-sheet-inspection-create' %}?sheet={{ inspection.sheet.id }}" class="btn btn-sm btn-soft-secondary" title="Duplicate/New for Sheet">
+                                        <i class="bx bx-plus"></i>
+                                    </a>
+                                    <a href="{% url 'pages:steel-sheet-inspection-edit' inspection.id %}" class="btn btn-sm btn-soft-info" title="Edit">
+                                        <i class="bx bx-edit"></i>
+                                    </a>
+                                    <form method="post" action="{% url 'pages:steel-sheet-inspection-delete' inspection.id %}" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-soft-danger" onclick="return confirm('Delete this inspection?');">
+                                            <i class="bx bx-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr><td colspan="12">No inspection records found.</td></tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}

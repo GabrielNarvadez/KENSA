@@ -87,7 +87,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "reback.users",
-    "reback.pages"
+    "reback.pages",
+    "widget_tweaks"
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

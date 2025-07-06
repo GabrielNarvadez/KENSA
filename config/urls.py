@@ -14,6 +14,7 @@ urlpatterns = [
     path("users/", include("reback.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     path("", include("reback.pages.urls", namespace="pages")),
+
     # Your stuff: custom urls includes go here
     # ...
     # Media files
@@ -45,3 +46,6 @@ if settings.DEBUG:
         import debug_toolbar
 
         urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
