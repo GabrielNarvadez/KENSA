@@ -1,0 +1,39 @@
+# Auto-detect text files and normalize line endings
+* text=auto
+
+# Explicitly set LF for source and config files
+*.py    text eol=lf
+*.sh    text eol=lf
+*.md    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.json  text eol=lf
+*.js    text eol=lf
+*.ts    text eol=lf
+*.css   text eol=lf
+*.scss  text eol=lf
+*.html  text eol=lf
+*.toml  text eol=lf
+*.ini   text eol=lf
+*.cfg   text eol=lf
+*.sql   text eol=lf
+
+# Windows-native scripts use CRLF
+*.bat   text eol=crlf
+*.ps1   text eol=crlf
+
+# Treat common binary assets as binary to avoid line-ending conversions
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.pdf   binary
+*.zip   binary
+*.gz    binary
+*.7z    binary
+*.jar   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.eot   binary
