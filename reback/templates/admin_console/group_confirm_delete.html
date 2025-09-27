@@ -1,0 +1,23 @@
+{% extends "layout_vertical.html" %}
+{% load i18n %}
+
+{% block title %}Delete Role{% endblock %}
+
+{% block page_title %}
+  <div class="row py-3">
+    <div class="col"><h3 class="mb-0">Delete Role</h3></div>
+  </div>
+{% endblock %}
+
+{% block page_content %}
+  <div class="card">
+    <div class="card-body">
+      <p>Delete role "{{ group.name }}"?</p>
+      <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Confirm</button>
+        <a class="btn btn-secondary" href="{% url 'admin_console:groups_list' %}">Cancel</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}

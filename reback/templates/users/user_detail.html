@@ -1,41 +1,51 @@
-{% extends "base.html" %}
+{% extends "layout_vertical.html" %}
 
 {% load static %}
 
-{% block title %}
-  User: 
-  
-    {{ object.name }}
-  
-  
-{% endblock title %}
-{% block content %}
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <h2>
-        
-        
-          {{ object.name }}
-        
-      </h2>
+{% block title %}User: {{ object.name|default:object.email }}{% endblock title %}
+
+{% block page_title %}
+  <div class="row py-3">
+    <div class="col"><h2 class="mb-0">{{ object.name|default:object.email }}</h2></div>
+  </div>
+{% endblock %}
+
+{% block page_content %}
+  <div class="card">
+    <div class="card-body">
+      <p>Email: {{ object.email }}</p>
+      <p>
+        Roles:
+        {% if object.groups.all %}
+          {% for g in object.groups.all %}
+            {{ g.name }}{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        {% else %}
+          None
+        {% endif %}
+      </p>
+      {% if object.avatar %}
+        <div class="mb-3">
+          <img src="{{ object.avatar.url }}" alt="avatar" class="img-thumbnail" style="max-width: 120px;" />
+        </div>
+      {% endif %}
+      {% if object.title %}
+        <p>Title: {{ object.title }}</p>
+      {% endif %}
+      {% if object.phone %}
+        <p>Phone: {{ object.phone }}</p>
+      {% endif %}
+      {% if object.bio %}
+        <p>Bio: {{ object.bio }}</p>
+      {% endif %}
+
+      {% if object == request.user %}
+      <div class="mt-3">
+        <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
+        <a class="btn btn-outline-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
+        <a class="btn btn-outline-primary" href="{% url 'mfa_index' %}" role="button">MFA</a>
+      </div>
+      {% endif %}
     </div>
   </div>
-  {% if object == request.user %}
-    <!-- Action buttons -->
-    <div class="row">
-      <div class="col-sm-12">
-        <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
-        <a class="btn btn-primary"
-           href="{% url 'account_email' %}"
-           role="button">E-Mail</a>
-        <a class="btn btn-primary"
-           href="{% url 'mfa_index' %}"
-           role="button">MFA</a>
-        <!-- Your Stuff: Custom user template urls -->
-      </div>
-    </div>
-    <!-- End Action buttons -->
-  {% endif %}
-</div>
-{% endblock content %}
+{% endblock %}

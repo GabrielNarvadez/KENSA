@@ -13,6 +13,7 @@ urlpatterns = [
     # User management
     path("users/", include("reback.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+    path("super-admin/", include("reback.users.urls_admin_console", namespace="admin_console")),
     path("", include("reback.pages.urls", namespace="pages")),
 
     # Your stuff: custom urls includes go here

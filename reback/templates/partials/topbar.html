@@ -368,22 +368,25 @@
             aria-expanded="false"
           >
                         <span class="d-flex align-items-center">
-                            <img
-                              class="rounded-circle"
-                              width="32"
-                              src="{% static 'images/users/avatar-1.jpg' %}"
-                              alt="avatar-3"
-                            />
+                            {% if request.user.is_authenticated and request.user.avatar %}
+                              <img class="rounded-circle" width="32" src="{{ request.user.avatar.url }}" alt="avatar" />
+                            {% else %}
+                              <img class="rounded-circle" width="32" src="{% static 'images/users/avatar-1.jpg' %}" alt="avatar" />
+                            {% endif %}
                         </span>
           </a>
           <div class="dropdown-menu dropdown-menu-end">
             <!-- item-->
-            <h6 class="dropdown-header">Welcome Gaston!</h6>
-            <a class="dropdown-item" href="{% url 'pages:dynamic_pages' template_name='pages-profile' %}">
+            <h6 class="dropdown-header">Welcome {{ request.user.name|default:request.user.email }}!</h6>
+            <a class="dropdown-item" href="{% url 'users:detail' request.user.pk %}">
               <i
                 class="bx bx-user-circle text-muted fs-18 align-middle me-1"
               ></i
               ><span class="align-middle">Profile</span>
+            </a>
+            <a class="dropdown-item" href="{% url 'users:update' %}">
+              <i class="bx bx-edit text-muted fs-18 align-middle me-1"></i>
+              <span class="align-middle">Edit profile</span>
             </a>
             {% comment %} <a class="dropdown-item" href="{% url 'pages:dynamic_pages' template_name='apps-chat' %}">
               <i
@@ -415,7 +418,7 @@
 
             <a
               class="dropdown-item text-danger"
-              href="{% url 'pages:dynamic_pages' template_name='login' %}"
+              href="{% url 'account_logout' %}"
             >
               <i class="bx bx-log-out fs-18 align-middle me-1"></i
               ><span class="align-middle">Logout</span>

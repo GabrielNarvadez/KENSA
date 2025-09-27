@@ -1,4 +1,5 @@
 {% load static i18n %}
+{% load roles_extras %}
 <style>
   /* 1. Make the main-nav a positioning context */
   .main-nav {
@@ -454,10 +455,10 @@
         </a>
       </li> {% endcomment %}
 
+      {% if user|has_group:"Admin" %}
       <li class="menu-title">Admin</li>
-      {% if user.is_staff %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='apps-contacts' %}">
+        <a class="nav-link" href="{% url 'admin_console:dashboard' %}">
                     <span class="nav-icon">
                         <iconify-icon
                           icon="iconamoon:profile-circle-duotone"
@@ -1095,15 +1096,4 @@
       <!-- end Demo Menu Item -->
     </ul>
   </div>
-    <!-- 3. The new glued-to-bottom link -->
-  {% if user.is_superuser %}
-  <div class="super-admin-console">
-    <a class="nav-link" href="{% url 'pages:dynamic_pages' template_name='charts-apex-radar' %}"> 
-      <span class="nav-icon">
-        <iconify-icon icon="iconamoon:invoice-duotone"></iconify-icon>
-      </span>
-      <span class="nav-text"> Super Admin Console </span>
-    </a>
-  </div>
-  {% endif %}
-</div>
+    </div>

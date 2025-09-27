@@ -1,0 +1,28 @@
+{% extends "layout_vertical.html" %}
+{% load i18n %}
+
+{% block title %}Super Admin Console{% endblock %}
+
+{% block page_title %}
+  <div class="row py-3">
+    <div class="col"><h2>Super Admin Console</h2></div>
+  </div>
+{% endblock %}
+
+{% block page_content %}
+  <div class="row my-3">
+    <div class="col">
+      <div class="card p-3">Users: {{ users_count }}</div>
+    </div>
+    <div class="col">
+      <div class="card p-3">Roles: {{ groups_count }}</div>
+    </div>
+    <div class="col">
+      <div class="card p-3">Permissions: {{ perms_count }}</div>
+    </div>
+  </div>
+  <div class="d-flex gap-2">
+    <a class="btn btn-primary" href="{% url 'admin_console:groups_list' %}">Manage Roles</a>
+    <a class="btn btn-primary" href="{% url 'admin_console:users_list' %}">Manage Users</a>
+  </div>
+{% endblock %}

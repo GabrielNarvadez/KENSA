@@ -1,0 +1,17 @@
+{% extends "layout_vertical.html" %}
+{% load i18n %}
+
+{# Title for the page <title> tag; child templates may override head_title #}
+{% block title %}{% block head_title %}{% endblock %}{% endblock %}
+
+{# Standard page header using the head_title block or a default #}
+{% block page_title %}
+  <div class="row py-3">
+    <div class="col"><h2 class="mb-0">{% block head_title %}{% trans "Two-Factor Authentication" %}{% endblock %}</h2></div>
+  </div>
+{% endblock %}
+
+{# Render MFA content inside the main content container #}
+{% block page_content %}
+  {% block content %}{% endblock %}
+{% endblock %}

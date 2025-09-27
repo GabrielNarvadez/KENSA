@@ -193,6 +193,10 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "reback.users.context_processors.allauth_settings",
             ],
+            "libraries": {
+                # Register custom template tag libraries
+                "roles_extras": "reback.users.templatetags.roles_extras",
+            },
         },
     },
 ]

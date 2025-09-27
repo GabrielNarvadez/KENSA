@@ -1,0 +1,21 @@
+{% extends "layout_vertical.html" %}
+{% load i18n %}
+
+{# Base wrapper for django-allauth account templates to use the site's layout with navbar + sidebar #}
+
+{# Map title #}
+{% block title %}{% block head_title %}{% endblock %}{% endblock %}
+
+{# Optional page header (child templates may not define) #}
+{% block page_title %}
+  {% if block.head_title %}
+  <div class="row py-3">
+    <div class="col"><h2 class="mb-0">{% block head_title_fallback %}{% block head_title %}{% endblock %}{% endblock %}</h2></div>
+  </div>
+  {% endif %}
+{% endblock %}
+
+{# Main content region where allauth templates render their content block #}
+{% block page_content %}
+  {% block content %}{% endblock %}
+{% endblock %}

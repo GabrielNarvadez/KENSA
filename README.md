@@ -105,3 +105,20 @@ Adding a new role
 Notes
 - Database defaults to SQLite in config/settings/base.py; adapt DATABASES in environment-specific settings as needed.
 - If you later change the redirect target, update LOGIN_REDIRECT_URL in settings.
+
+---
+
+## Changelog (2025-09-27)
+
+- RBAC enforcement across views using Django permissions (pages app): add/view/change/delete are required per feature.
+- Default roles via Groups auto-seeded on post_migrate (Admin, QC Inspector, Production Manager) with sensible permissions.
+- Super Admin Console (/super-admin/):
+  - Dashboard, Role CRUD with permission editing, Users list with inline roles and bulk assignment.
+  - Superuser-only access; integrated with site layout (sidebar/topbar).
+  - Sidebar “Users & Roles” now routes to /super-admin/; removed old “Super Admin Console” button.
+- User profiles:
+  - Extended User model with avatar, title, phone, bio; profile edit supports file upload.
+  - Navbar avatar displays uploaded image; profile pages use site layout.
+- Account pages layout:
+  - /accounts/email/ and /accounts/2fa/ now use the standard layout (navbar + sidebar) via account/base.html and mfa/base.html.
+- Sidebar Admin section visibility restricted to the “Admin” Group using roles_extras template tag; library registered in settings.
