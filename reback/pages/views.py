@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.template import TemplateDoesNotExist
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -10,6 +11,7 @@ from django import forms
 from django.forms import modelformset_factory
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse
+import csv
 
 User = get_user_model()
 
@@ -27,7 +29,8 @@ def dynamic_pages_view(request, template_name):
     except TemplateDoesNotExist:
         return render(request, 'pages/pages-404.html')
 
-class SteelSheetListView(ListView):
+class SteelSheetListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    permission_required = 'pages.view_steelsheet'
     model = SteelSheet
     template_name = 'pages/steel-sheets-list.html'
     context_object_name = 'sheets'
@@ -59,29 +62,35 @@ class SteelSheetListView(ListView):
         context['search'] = self.request.GET.get('search', '')
         return context
 
-class SteelSheetCreateView(CreateView):
+class SteelSheetCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    permission_required = 'pages.add_steelsheet'
     model = SteelSheet
     fields = ['lot_number', 'part_name', 'thickness', 'width', 'length', 'category', 'quantity', 'location']
     template_name = 'pages/steel-sheets-add.html'
     success_url = reverse_lazy('pages:steel-sheet-list')
 
 
-class SteelSheetUpdateView(UpdateView):
+class SteelSheetUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    permission_required = 'pages.change_steelsheet'
     model = SteelSheet
     fields = ['lot_number', 'part_name', 'thickness', 'width', 'length', 'category', 'quantity', 'location']
     template_name = 'pages/steel-sheets-add.html'
     success_url = reverse_lazy('pages:steel-sheet-list')
 
-class SteelSheetDeleteView(DeleteView):
+class SteelSheetDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    permission_required = 'pages.delete_steelsheet'
     model = SteelSheet
     template_name = 'pages/steel-sheet-confirm-delete.html'
     success_url = reverse_lazy('pages:steel-sheet-list')
 
-class SteelSheetDetailView(DetailView):
+class SteelSheetDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
+    permission_required = 'pages.view_steelsheet'
     model = SteelSheet
     template_name = 'pages/steel-sheet-detail.html'
 
 @require_POST
+@login_required
+@permission_required('pages.delete_steelsheet', raise_exception=True)
 def steel_sheet_delete(request, pk):
     sheet = get_object_or_404(SteelSheet, pk=pk)
     sheet.delete()
@@ -106,6 +115,7 @@ SteelSheetInspectionFormSet = modelformset_factory(
 )
 
 @login_required
+@permission_required('pages.add_steelsheetinspection', raise_exception=True)
 def batch_inspection_view(request):
     sheets = list(SteelSheet.objects.all().order_by('created_at'))
     initial = [{'sheet': sheet.id, 'inspector': request.user.id} for sheet in sheets]
@@ -126,6 +136,7 @@ def batch_inspection_view(request):
     })
 
 @login_required
+@permission_required('pages.view_steelsheetinspection', raise_exception=True)
 def steel_sheet_inspection_list(request):
     inspections = SteelSheetInspection.objects.select_related('sheet', 'inspector').order_by('-inspection_date')
     return render(request, 'pages/steel-sheet-inspection-list.html', {
@@ -133,6 +144,7 @@ def steel_sheet_inspection_list(request):
     })
 
 @login_required
+@permission_required('pages.add_steelsheetinspection', raise_exception=True)
 def steel_sheet_inspection_create(request):
     selected_sheet = None
     users = User.objects.all()  # You can filter for QC Inspectors later
@@ -171,6 +183,7 @@ def steel_sheet_inspection_create(request):
     })
 
 @login_required
+@permission_required('pages.change_steelsheetinspection', raise_exception=True)
 def steel_sheet_inspection_edit(request, pk):
     inspection = get_object_or_404(SteelSheetInspection, pk=pk)
     selected_sheet = inspection.sheet  # The related sheet
@@ -190,11 +203,14 @@ def steel_sheet_inspection_edit(request, pk):
 
 @require_POST
 @login_required
+@permission_required('pages.delete_steelsheetinspection', raise_exception=True)
 def steel_sheet_inspection_delete(request, pk):
     inspection = get_object_or_404(SteelSheetInspection, pk=pk)
     inspection.delete()
     return redirect('pages:steel-sheet-inspection-list')
 
+@login_required
+@permission_required('pages.view_steelsheet', raise_exception=True)
 def steel_sheet_status(request):
     sheets = SteelSheet.objects.prefetch_related('inspections').all()
     selected_id = request.GET.get('sheet_id')
@@ -210,6 +226,7 @@ def steel_sheet_status(request):
     })
 
 @login_required
+@permission_required('pages.view_scanlog', raise_exception=True)
 def scan_log_view(request):
     logs = ScanLog.objects.select_related('operator', 'qc_manager_tagged').all()
 
@@ -286,13 +303,16 @@ def scan_log_view(request):
 
 
 @login_required
+@permission_required('pages.view_scanlog', raise_exception=True)
 def scan_log_detail(request, pk):
     return HttpResponse("Scan Log Detail view coming soon!")
 
 @login_required
+@permission_required('pages.change_scanlog', raise_exception=True)
 def scan_log_edit(request, pk):
     return HttpResponse("Scan Log Edit view coming soon!")
 
 @login_required
+@permission_required('pages.delete_scanlog', raise_exception=True)
 def scan_log_delete(request, pk):
     return HttpResponse("Scan Log Delete view coming soon!")

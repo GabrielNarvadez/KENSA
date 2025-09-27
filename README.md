@@ -13,9 +13,9 @@ Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings
 
 ### Setting Up Your Users
 
-- To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
+- To create a normal user account, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
 
-- To create a **superuser account**, use this command:
+- To create a superuser account, use this command:
 
       $ python manage.py createsuperuser
 
@@ -52,6 +52,56 @@ The following details how to deploy this application.
 The generated CSS is set up with automatic Bootstrap recompilation with variables of your choice.
 Bootstrap v5 is installed using npm and customised by tweaking your variables in `static/sass/custom_bootstrap_vars`.
 
-You can find a list of available variables [in the bootstrap source](https://github.com/twbs/bootstrap/blob/v5.1.3/scss/_variables.scss), or get explanations on them in the [Bootstrap docs](https://getbootstrap.com/docs/5.1/customize/sass/).
+You can find a list of available variables in the bootstrap source, or get explanations on them in the Bootstrap docs.
 
 Bootstrap's javascript as well as its dependencies are concatenated into a single file: `static/js/vendors.js`.
+
+---
+
+## User Roles and Access Control
+
+Overview
+- Authentication is provided by django-allauth.
+- Authorization uses Django’s built-in permissions and Groups (roles). Views and menus enforce permissions, so admins can add/modify/remove roles without code changes.
+- Post-login redirect is set to the dashboard: LOGIN_REDIRECT_URL = "pages:dashboard".
+
+Default roles (auto-created)
+- Admin: Full access to SteelSheet, SteelSheetInspection, and ScanLog (all model permissions).
+- QC Inspector: Manage inspections; view steel sheets and scan logs.
+- Production Manager: Manage steel sheets; view inspections and scan logs.
+- These are created/seeded in reback/users/signals.py on post_migrate. Seeding adds permissions only if the group has none (won’t overwrite manual changes).
+
+Setup
+- python manage.py migrate
+- python manage.py createsuperuser
+- Sign in to /admin → Authentication and Authorization:
+  - Groups: Create new roles or adjust permissions for existing roles.
+  - Users: Assign users to groups.
+
+Key permissions enforced by views
+- Steel sheets
+  - List/Detail: pages.view_steelsheet
+  - Create: pages.add_steelsheet
+  - Edit: pages.change_steelsheet
+  - Delete: pages.delete_steelsheet
+- Inspections
+  - List: pages.view_steelsheetinspection
+  - Create: pages.add_steelsheetinspection
+  - Edit: pages.change_steelsheetinspection
+  - Delete: pages.delete_steelsheetinspection
+- Scan logs
+  - List/Detail: pages.view_scanlog
+  - Edit: pages.change_scanlog
+  - Delete: pages.delete_scanlog
+
+Navigation visibility
+- Menu items are shown/hidden based on the current user’s permissions or staff/superuser flags. See reback/templates/partials/main-nav.html for the conditions.
+
+Adding a new role
+- Create a Group in /admin → Groups.
+- Assign the desired model permissions to that Group.
+- Add users to that Group. They immediately inherit those permissions across views and menus.
+
+Notes
+- Database defaults to SQLite in config/settings/base.py; adapt DATABASES in environment-specific settings as needed.
+- If you later change the redirect target, update LOGIN_REDIRECT_URL in settings.
